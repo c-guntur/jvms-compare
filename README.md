@@ -11,7 +11,7 @@ Various profiles are intended to execute the same benchmarks on different JVMs, 
 
 Setup the environment variables for GRAALVM_HOME and JAVA_HOME etc.
 
-~~### Samples:
+### Samples:
 
 #### Setting GRAALVM_HOME
 `export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-ee-1.0.0-rc13/Contents/Home/`
