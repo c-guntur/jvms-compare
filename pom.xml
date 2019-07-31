@@ -24,7 +24,7 @@
         <maven.compiler.target>8</maven.compiler.target>
 
         <eclipse-collections.version>10.0.0</eclipse-collections.version>
-        <jmh.version>1.93</jmh.version>
+        <jmh.version>1.9.3</jmh.version>
         <junit.version>5.5.0</junit.version>
     </properties>
 
@@ -86,6 +86,269 @@
 
 
     <profiles>
+        <!--        <profile>-->
+        <!--            <id>graalee</id>-->
+        <!--            <build>-->
+        <!--                <plugins>-->
+        <!--                    <plugin>-->
+        <!--                        <groupId>org.apache.maven.plugins</groupId>-->
+        <!--                        <artifactId>maven-toolchains-plugin</artifactId>-->
+        <!--                        <version>1.1</version>-->
+        <!--                        <executions>-->
+        <!--                            <execution>-->
+        <!--                                <goals>-->
+        <!--                                    <goal>toolchain</goal>-->
+        <!--                                </goals>-->
+        <!--                            </execution>-->
+        <!--                        </executions>-->
+        <!--                        <configuration>-->
+        <!--                            <toolchains>-->
+        <!--                                <jdk>-->
+        <!--                                    <version>8</version>-->
+        <!--                                    <vendor>graalvm</vendor>-->
+        <!--                                </jdk>-->
+        <!--                            </toolchains>-->
+        <!--                        </configuration>-->
+        <!--                    </plugin>-->
+        <!--                </plugins>-->
+        <!--            </build>-->
+        <!--        </profile>-->
+        <!--        <profile>-->
+        <!--            <id>oracleJava8</id>-->
+        <!--            <build>-->
+        <!--                <plugins>-->
+        <!--                    <plugin>-->
+        <!--                        <groupId>org.apache.maven.plugins</groupId>-->
+        <!--                        <artifactId>maven-toolchains-plugin</artifactId>-->
+        <!--                        <version>1.1</version>-->
+        <!--                        <executions>-->
+        <!--                            <execution>-->
+        <!--                                <goals>-->
+        <!--                                    <goal>toolchain</goal>-->
+        <!--                                </goals>-->
+        <!--                            </execution>-->
+        <!--                        </executions>-->
+        <!--                        <configuration>-->
+        <!--                            <toolchains>-->
+        <!--                                <jdk>-->
+        <!--                                    <version>8</version>-->
+        <!--                                    <vendor>oracle</vendor>-->
+        <!--                                </jdk>-->
+        <!--                            </toolchains>-->
+        <!--                        </configuration>-->
+        <!--                    </plugin>-->
+        <!--                </plugins>-->
+        <!--            </build>-->
+        <!--        </profile>-->
+        <!--        <profile>-->
+        <!--            <id>object</id>-->
+        <!--            <build>-->
+        <!--                <plugins>-->
+        <!--                    <plugin>-->
+        <!--                        <groupId>org.apache.maven.plugins</groupId>-->
+        <!--                        <artifactId>maven-surefire-plugin</artifactId>-->
+        <!--                        <version>2.22.2</version>-->
+        <!--                        <configuration>-->
+        <!--                            <excludes>-->
+        <!--                                <exclude>**/IntList*.java</exclude>-->
+        <!--                            </excludes>-->
+        <!--                        </configuration>-->
+        <!--                    </plugin>-->
+        <!--                </plugins>-->
+        <!--            </build>-->
+        <!--        </profile>-->
+        <!--        <profile>-->
+        <!--            <id>primitive</id>-->
+        <!--            <build>-->
+        <!--                <plugins>-->
+        <!--                    <plugin>-->
+        <!--                        <groupId>org.apache.maven.plugins</groupId>-->
+        <!--                        <artifactId>maven-surefire-plugin</artifactId>-->
+        <!--                        <version>2.22.2</version>-->
+        <!--                        <configuration>-->
+        <!--                            <excludes>-->
+        <!--                                <exclude>**/Person*.java</exclude>-->
+        <!--                            </excludes>-->
+        <!--                        </configuration>-->
+        <!--                    </plugin>-->
+        <!--                </plugins>-->
+        <!--            </build>-->
+        <!--        </profile>-->
+
+
+        <profile>
+            <id>graalobject</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-toolchains-plugin</artifactId>
+                        <version>1.1</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>toolchain</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <toolchains>
+                                <jdk>
+                                    <version>8</version>
+                                    <vendor>graalvm</vendor>
+                                </jdk>
+                            </toolchains>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.22.2</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/IntList*.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>oracleobject</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-toolchains-plugin</artifactId>
+                        <version>1.1</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>toolchain</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <toolchains>
+                                <jdk>
+                                    <version>8</version>
+                                    <vendor>oracle</vendor>
+                                </jdk>
+                            </toolchains>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.22.2</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/IntList*.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>graalprimitive</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-toolchains-plugin</artifactId>
+                        <version>1.1</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>toolchain</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <toolchains>
+                                <jdk>
+                                    <version>8</version>
+                                    <vendor>graalvm</vendor>
+                                </jdk>
+                            </toolchains>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>3.1.1</version>
+                        <executions>
+                            <execution>
+                                <id>build-classpath</id>
+                                <goals>
+                                    <goal>build-classpath</goal>
+                                </goals>
+                                <configuration>
+                                    <includeScope>runtime</includeScope>
+                                    <outputProperty>depClasspath</outputProperty>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.5.0</version>
+
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>bnymellon.codekatas.jmhkata.IntListJMHBenchmarkTest
+                                </argument>
+                            </arguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>oracleprimitive</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-toolchains-plugin</artifactId>
+                        <version>1.1</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>toolchain</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <toolchains>
+                                <jdk>
+                                    <version>8</version>
+                                    <vendor>oracle</vendor>
+                                </jdk>
+                            </toolchains>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.22.2</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/Person*.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
 
     </profiles>
 </project>

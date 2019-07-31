@@ -53,10 +53,11 @@ http://maven.apache.org/TOOLCHAINS/1.1.0 ">
         <type>jdk</type>
         <provides>
             <version>8</version>
-            <vendor>graal-vm</vendor>
+            <vendor>graalvm</vendor>
         </provides>
         <configuration>
-            <jdkHome>/Library/Java/JavaVirtualMachines/graalvm-ee-1.0.0-rc13</jdkHome>
+            <jdkHome>/Library/Java/JavaVirtualMachines/graalvm-ee-1.0.0-rc13/Contents/Home/</jdkHome>
+<!--            <jdkHome>${env.GRAALVM_HOME}</jdkHome>-->
         </configuration>
     </toolchain>
     <toolchain>
@@ -66,7 +67,8 @@ http://maven.apache.org/TOOLCHAINS/1.1.0 ">
             <vendor>oracle</vendor>
         </provides>
         <configuration>
-            <jdkHome>/Library/Java/JavaVirtualMachines/jdk1.8.0_212.jdk</jdkHome>
+            <jdkHome>/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/</jdkHome>
+<!--            <jdkHome>${JAVA8_HOME}</jdkHome>-->
         </configuration>
     </toolchain>
 
