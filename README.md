@@ -19,22 +19,25 @@ Setup the environment variables for GRAALVM_HOME and JAVA_HOME etc.
 #### Setting JAVA8_HOME
 `export JAVA8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_212.jdk/Contents/Home/`
 
-## Execute Maven
+~~## Execute Maven~~
 
-### Graal
+~~### Graal~~
 
-The command line to run this project with GraalVM:
+~~The command line to run this project with GraalVM:~~
 
-` mvn clean install -P graalee -t toolchains.xml`
+~~`mvn clean install -P graalee -t toolchains.xml`~~
 
-### Oracle Java 8
+~~### Oracle Java 8~~
 
-` mvn clean install -P oracleJava8 -t toolchains.xml`~~
+~~`mvn clean install -P oracleJava8 -t toolchains.xml`~~
 
 ## Usage
 
 mvn -P graalprimitive clean test exec:exec -t toolchains.xml 
+
 mvn -P oracleprimitive clean test exec:exec -t toolchains.xml 
+
 mvn -P graalobject clean test exec:exec -t toolchains.xml 
+
 mvn -P oracleobject clean test exec:exec -t toolchains.xml 
 
