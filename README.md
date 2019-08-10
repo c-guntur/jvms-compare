@@ -65,3 +65,18 @@ Update the `toolchains.xml` locally and point to:
 
 Additional toolchains can also be added if more JDK distros are being tested.
 
+## How to run embedded VMs
+
+### Running the embedded GraalVM in Oracle JDK 8
+
+Two steps are needed to run the GraalVM CE embedded in Oracle Java 8
+
+1. Export the maven options:
+   export MAVEN_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler"
+2. Run the OracleJava8 profiles (either one below)
+   * `mvn -P OracleJava8Person clean test exec:exec -t toolchains.xml`
+   * `mvn -P OracleJava8IntList clean test exec:exec -t toolchains.xml` 
+   
+### Running the embedded Hotspot in GraalVM EE 19.1.1
+
+???

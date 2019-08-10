@@ -6,10 +6,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>bnymellon.codekatas</groupId>
-    <artifactId>jmh-kata</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <artifactId>jvms-compare</artifactId>
+    <version>1.0.0</version>
 
-    <name>JMH Kata</name>
+    <name>JVMs Compare</name>
     <description>
         The JVMs Compare is a project setup with some micro-benchmarks
         that you can use as a model to try out your own Java micro-benchmarks using
