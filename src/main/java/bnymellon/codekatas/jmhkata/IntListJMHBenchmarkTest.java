@@ -68,6 +68,7 @@ public class IntListJMHBenchmarkTest
 
     public static void main(String[] args) throws RunnerException
     {
+        new JavaInformation().printJavaInformation();
         Options options = new OptionsBuilder().include(".*" + IntListJMHBenchmarkTest.class.getSimpleName() + ".*")
                 .forks(2)
                 .warmupIterations(10)

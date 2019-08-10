@@ -53,13 +53,18 @@ http://maven.apache.org/TOOLCHAINS/1.1.0 ">
         <type>jdk</type>
         <provides>
             <version>8</version>
-            <vendor>graalvm</vendor>
+            <vendor>graalvmee</vendor>
         </provides>
         <configuration>
+
+            <!-- As of Apache Maven 3.6.1, env. variables cannot be used in toolchains -->
             <jdkHome>/Library/Java/JavaVirtualMachines/graalvm-ee-1.0.0-rc13/Contents/Home/</jdkHome>
-<!--            <jdkHome>${env.GRAALVM_HOME}</jdkHome>-->
+
+            <!-- Env. variables will be usable after Apache Maven 3.6.2 only -->
+            <!-- <jdkHome>${env.GRAALVM_EE_HOME}</jdkHome> -->
         </configuration>
     </toolchain>
+
     <toolchain>
         <type>jdk</type>
         <provides>
@@ -67,8 +72,12 @@ http://maven.apache.org/TOOLCHAINS/1.1.0 ">
             <vendor>oracle</vendor>
         </provides>
         <configuration>
+
+            <!-- As of Apache Maven 3.6.1, env. variables cannot be used in toolchains -->
             <jdkHome>/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/</jdkHome>
-<!--            <jdkHome>${JAVA8_HOME}</jdkHome>-->
+
+            <!-- Env. variables will be usable after Apache Maven 3.6.2 only -->
+            <!-- <jdkHome>${ORACLE_JAVA8_HOME}</jdkHome> -->
         </configuration>
     </toolchain>
 

@@ -60,6 +60,7 @@ public class PersonJMHBenchmarkTest
 
     public static void main(String[] args) throws RunnerException
     {
+        new JavaInformation().printJavaInformation();
         Options options = new OptionsBuilder().include(".*" + PersonJMHBenchmarkTest.class.getSimpleName() + ".*")
                 .forks(2)
                 .warmupIterations(10)
