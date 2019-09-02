@@ -41,17 +41,29 @@ can be created by:
 ### Default maven invocation
 The maven command to mvn -P **<profile name>**  clean test exec:exec -t toolchains.xml
 
-#### Run Graal VM EE with Primitive IntList Benchmarks
-    `mvn -P GraalEEIntList clean test exec:exec -t toolchains.xml` 
-
 #### Run Oracle Java 8 with Primitive IntList Benchmarks
-    `mvn -P OracleJava8IntList clean test exec:exec -t toolchains.xml` 
-
-#### Run Graal VM EE with Object Benchmarks
-    `mvn -P GraalEEPerson clean test exec:exec -t toolchains.xml` 
+    export MAVEN_OPTS=
+    mvn -P OracleJava8IntList clean test exec:exec -t toolchains.xml 
 
 #### Run Oracle Java 8 with Object Benchmarks
-    `mvn -P OracleJava8Person clean test exec:exec -t toolchains.xml`
+    export MAVEN_OPTS=
+    mvn -P OracleJava8Person clean test exec:exec -t toolchains.xml
+
+#### Run Graal VM EE with Primitive IntList Benchmarks
+    export MAVEN_OPTS=
+    mvn -P GraalEEIntList clean test exec:exec -t toolchains.xml 
+
+#### Run Graal VM EE with Object Benchmarks
+    export MAVEN_OPTS=
+    mvn -P GraalEEPerson clean test exec:exec -t toolchains.xml
+
+#### Run Graal VM EE using C2 Compiler with Primitive IntList Benchmarks
+    export MAVEN_OPTS="-XX:+UnlockExperimentalVMOptions -XX:-UseJVMCICompiler"
+    mvn -P GraalEEIntList clean test exec:exec -t toolchains.xml 
+
+#### Run Graal VM EE using C2 Compiler with Object Benchmarks
+    export MAVEN_OPTS="-XX:+UnlockExperimentalVMOptions -XX:-UseJVMCICompiler"
+    mvn -P GraalEEIntList clean test exec:exec -t toolchains.xml 
 
 ## Notes on toolchains
 

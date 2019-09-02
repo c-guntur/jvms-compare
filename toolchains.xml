@@ -69,7 +69,7 @@ http://maven.apache.org/TOOLCHAINS/1.1.0 ">
         <type>jdk</type>
         <provides>
             <version>8</version>
-            <vendor>oracle</vendor>
+            <vendor>openjdk</vendor>
         </provides>
         <configuration>
 
@@ -90,7 +90,7 @@ http://maven.apache.org/TOOLCHAINS/1.1.0 ">
         <configuration>
 
             <!-- As of Apache Maven 3.6.1, env. variables cannot be used in toolchains -->
-            <jdkHome>/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/</jdkHome>
+            <jdkHome>/Library/Java/JavaVirtualMachines/oraclejdk-11.0.4.jdk/Contents/Home</jdkHome>
 
             <!-- Env. variables will be usable after Apache Maven 3.6.2 only -->
             <!-- <jdkHome>${ORACLE_JAVA11_HOME}</jdkHome> -->
