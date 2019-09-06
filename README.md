@@ -7,7 +7,21 @@ The unit tests rely on [**Eclipse Collections**](https://eclipse.org/collections
 use JMH for benchmarks.
 
 Various profiles are intended to execute the same benchmarks on different JVMs, such as 
-GraalVM CE, GraalVM EE, OpenJDK 8, Oracle JDK 8.
+GraalVM CE, GraalVM EE, OpenJDK 11, Oracle JDK 8.
+
+## What is currently tested?
+
+Sequence | JDK | Version |  Notes
+-------------- | ------------------ | ---------------------- | -------------------------------
+01 | Oracle JDK 8 | 1.8.0_221 | 
+02 | Graal VM EE | 19.2.0 | 
+03 | Graal VM CE | 19.2.0 | 
+04 | AdoptOpenJDK 8 w/Hotspot | 1.8.0_221 | 
+05 | AdoptOpenJDK 8 w/OpenJ9 | 1.8.0_221 | OpenJ9 build openj9-0.15.1
+06 | OpenJDK 11 | 11.0.2 | 
+07 | OpenJDK 11 w/Graal | 11.0.2 | Experimental Option +UseJVMCICompiler
+08 | GraalEE w/C2 | 19.2.0 | Experimental Option -UseJVMCICompiler
+
 
 ## Setup Steps
 
