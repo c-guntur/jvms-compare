@@ -42,7 +42,7 @@ public class PersonCombinedSummaryStats
                 .measurementIterations(10)
                 .measurementTime(TimeValue.seconds(5L))
                 .timeout(TimeValue.seconds(20))
-                .mode(Mode.All)
+                .mode(Mode.Throughput)
                 .timeUnit(TimeUnit.SECONDS)
                 .build();
         new Runner(options).run();
