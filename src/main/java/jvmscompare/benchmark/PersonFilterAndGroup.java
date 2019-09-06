@@ -49,7 +49,7 @@ public class PersonFilterAndGroup
                 .measurementIterations(10)
                 .measurementTime(TimeValue.seconds(5L))
                 .timeout(TimeValue.seconds(20))
-                .mode(Mode.Throughput)
+                .mode(Mode.All)
                 .timeUnit(TimeUnit.SECONDS)
                 .build();
         new Runner(options).run();
