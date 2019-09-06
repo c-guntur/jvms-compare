@@ -96,220 +96,147 @@
 
 
     <profiles>
+
         <profile>
-            <id>GraalEEIntList</id>
+            <id>IntList</id>
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.8.1</version>
-                        <configuration>
-                            <source>8</source>
-                            <target>8</target>
-                        </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-toolchains-plugin</artifactId>
-                        <version>1.1</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>toolchain</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <toolchains>
-                                <jdk>
-                                    <version>8</version>
-                                    <vendor>graalvmee</vendor>
-                                </jdk>
-                            </toolchains>
-                        </configuration>
-                    </plugin>
-                    <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                    <classpath/>
-                                    <argument>bnymellon.codekatas.jmhkata.IntListJMHBenchmarkTest
-                                </argument>
-                            </arguments>
-                        </configuration>
+                        <version>1.6.0</version>
+                        <executions>
+                            <execution>
+                                <id>default-cli</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>jvmscompare.benchmark.IntListFilter</argument>
+                                        <argument>${execution.name}IntListFilter</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>sum</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>jvmscompare.benchmark.IntListSum</argument>
+                                        <argument>${execution.name}IntListSum</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>transform</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>jvmscompare.benchmark.IntListTransform</argument>
+                                        <argument>${execution.name}IntListTransform</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
         </profile>
 
         <profile>
-            <id>GraalEEPerson</id>
+            <id>Person</id>
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.8.1</version>
-                        <configuration>
-                            <source>8</source>
-                            <target>8</target>
-                        </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-toolchains-plugin</artifactId>
-                        <version>1.1</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>toolchain</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <toolchains>
-                                <jdk>
-                                    <version>8</version>
-                                    <vendor>graalvmee</vendor>
-                                </jdk>
-                            </toolchains>
-                        </configuration>
-                    </plugin>
-                    <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>bnymellon.codekatas.jmhkata.PersonJMHBenchmarkTest
-                                </argument>
-                            </arguments>
-                        </configuration>
+                        <version>1.6.0</version>
+                        <executions>
+                            <execution>
+                                <id>default-cli</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>jvmscompare.benchmark.PersonFilterOnly</argument>
+                                        <argument>${execution.name}PersonFilter</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>filterAndGroup</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>jvmscompare.benchmark.PersonFilterAndGroup</argument>
+                                        <argument>${execution.name}PersonFilterAndGroup</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>intSummaryStats</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>jvmscompare.benchmark.PersonIntSummaryStats</argument>
+                                        <argument>${execution.name}PersonIntSummaryStats</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>combinedSummaryStats</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>jvmscompare.benchmark.PersonCombinedSummaryStats</argument>
+                                        <argument>${execution.name}PersonCombinedSummaryStats</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
         </profile>
 
         <profile>
-            <id>GraalCEIntList</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.8.1</version>
-                        <configuration>
-                            <source>8</source>
-                            <target>8</target>
-                        </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-toolchains-plugin</artifactId>
-                        <version>1.1</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>toolchain</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <toolchains>
-                                <jdk>
-                                    <version>8</version>
-                                    <vendor>graalvmce</vendor>
-                                </jdk>
-                            </toolchains>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                    <classpath/>
-                                    <argument>bnymellon.codekatas.jmhkata.IntListJMHBenchmarkTest
-                                </argument>
-                            </arguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>GraalCEPerson</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.8.1</version>
-                        <configuration>
-                            <source>8</source>
-                            <target>8</target>
-                        </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-toolchains-plugin</artifactId>
-                        <version>1.1</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>toolchain</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <toolchains>
-                                <jdk>
-                                    <version>8</version>
-                                    <vendor>graalvmce</vendor>
-                                </jdk>
-                            </toolchains>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>bnymellon.codekatas.jmhkata.PersonJMHBenchmarkTest
-                                </argument>
-                            </arguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>OracleJava8IntList</id>
+            <id>OracleJDK8</id>
+            <properties>
+                <execution.name>01_OracleJDK8</execution.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -342,27 +269,15 @@
                             </toolchains>
                         </configuration>
                     </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>bnymellon.codekatas.jmhkata.IntListJMHBenchmarkTest
-                                </argument>
-                            </arguments>
-                        </configuration>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
 
         <profile>
-            <id>OracleJava8Person</id>
+            <id>GraalEE</id>
+            <properties>
+                <execution.name>02_GraalEE</execution.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -390,24 +305,9 @@
                             <toolchains>
                                 <jdk>
                                     <version>8</version>
-                                    <vendor>oracle</vendor>
+                                    <vendor>graalvmee</vendor>
                                 </jdk>
                             </toolchains>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>bnymellon.codekatas.jmhkata.PersonJMHBenchmarkTest
-                                </argument>
-                            </arguments>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -415,7 +315,10 @@
         </profile>
 
         <profile>
-            <id>AdoptOpenJDK8HotspotIntList</id>
+            <id>GraalCE</id>
+            <properties>
+                <execution.name>03_GraalCE</execution.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -443,24 +346,9 @@
                             <toolchains>
                                 <jdk>
                                     <version>8</version>
-                                    <vendor>AdoptOpenJDK8Hotspot</vendor>
+                                    <vendor>graalvmce</vendor>
                                 </jdk>
                             </toolchains>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>bnymellon.codekatas.jmhkata.IntListJMHBenchmarkTest
-                                </argument>
-                            </arguments>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -468,7 +356,10 @@
         </profile>
 
         <profile>
-            <id>AdoptOpenJDK8HotspotPerson</id>
+            <id>AdoptOpenJDK8Hotspot</id>
+            <properties>
+                <execution.name>04_AdoptOpenJDK8Hotspot</execution.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -501,27 +392,15 @@
                             </toolchains>
                         </configuration>
                     </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>bnymellon.codekatas.jmhkata.PersonJMHBenchmarkTest
-                                </argument>
-                            </arguments>
-                        </configuration>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
 
         <profile>
-            <id>AdoptOpenJDK8OpenJ9IntList</id>
+            <id>AdoptOpenJDK8OpenJ9</id>
+            <properties>
+                <execution.name>05_AdoptOpenJDKOpenJ9</execution.name>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -554,27 +433,22 @@
                             </toolchains>
                         </configuration>
                     </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>bnymellon.codekatas.jmhkata.IntListJMHBenchmarkTest
-                                </argument>
-                            </arguments>
-                        </configuration>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
 
         <profile>
-            <id>AdoptOpenJDK8OpenJ9Person</id>
+            <id>OpenJDK11Hotspot</id>
+            <properties>
+                <execution.name>06_OpenJDK11Hotspot</execution.name>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>javax.annotation</groupId>
+                    <artifactId>javax.annotation-api</artifactId>
+                    <version>1.3.1</version>
+                </dependency>
+            </dependencies>
             <build>
                 <plugins>
                     <plugin>
@@ -582,8 +456,8 @@
                         <artifactId>maven-compiler-plugin</artifactId>
                         <version>3.8.1</version>
                         <configuration>
-                            <source>8</source>
-                            <target>8</target>
+                            <source>11</source>
+                            <target>11</target>
                         </configuration>
                     </plugin>
 
@@ -601,25 +475,10 @@
                         <configuration>
                             <toolchains>
                                 <jdk>
-                                    <version>8</version>
-                                    <vendor>AdoptOpenJDK8OpenJ9</vendor>
+                                    <version>11</version>
+                                    <vendor>openjdk</vendor>
                                 </jdk>
                             </toolchains>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>bnymellon.codekatas.jmhkata.PersonJMHBenchmarkTest
-                                </argument>
-                            </arguments>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -627,7 +486,10 @@
         </profile>
 
         <profile>
-            <id>OpenJDK11HotspotIntList</id>
+            <id>OpenJDK11Graal</id>
+            <properties>
+                <execution.name>07_OpenJDK11Graal</execution.name>
+            </properties>
             <dependencies>
                 <dependency>
                     <groupId>javax.annotation</groupId>
@@ -670,207 +532,144 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>bnymellon.codekatas.jmhkata.IntListJMHBenchmarkTest
-                                </argument>
-                            </arguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>OpenJDK11HotspotPerson</id>
-            <dependencies>
-                <dependency>
-                    <groupId>javax.annotation</groupId>
-                    <artifactId>javax.annotation-api</artifactId>
-                    <version>1.3.1</version>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.8.1</version>
-                        <configuration>
-                            <source>11</source>
-                            <target>11</target>
-                        </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-toolchains-plugin</artifactId>
-                        <version>1.1</version>
+                        <version>1.6.0</version>
                         <executions>
                             <execution>
+                                <id>default-cli</id>
                                 <goals>
-                                    <goal>toolchain</goal>
+                                    <goal>exec</goal>
                                 </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-XX:+UnlockExperimentalVMOptions</argument>
+                                        <argument>-XX:+EnableJVMCI</argument>
+                                        <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>
+                                            jvmscompare.benchmark.IntListFilter
+                                        </argument>
+                                        <argument>${execution.name}IntListFilter</argument>
+                                    </arguments>
+                                </configuration>
                             </execution>
-                        </executions>
-                        <configuration>
-                            <toolchains>
-                                <jdk>
-                                    <version>11</version>
-                                    <vendor>openjdk</vendor>
-                                </jdk>
-                            </toolchains>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>bnymellon.codekatas.jmhkata.PersonJMHBenchmarkTest
-                                </argument>
-                            </arguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>OpenJDK11GraalIntList</id>
-            <dependencies>
-                <dependency>
-                    <groupId>javax.annotation</groupId>
-                    <artifactId>javax.annotation-api</artifactId>
-                    <version>1.3.1</version>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.8.1</version>
-                        <configuration>
-                            <source>11</source>
-                            <target>11</target>
-                        </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-toolchains-plugin</artifactId>
-                        <version>1.1</version>
-                        <executions>
                             <execution>
+                                <id>sum</id>
                                 <goals>
-                                    <goal>toolchain</goal>
+                                    <goal>exec</goal>
                                 </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-XX:+UnlockExperimentalVMOptions</argument>
+                                        <argument>-XX:+EnableJVMCI</argument>
+                                        <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>
+                                            jvmscompare.benchmark.IntListSum
+                                        </argument>
+                                        <argument>${execution.name}IntListSum</argument>
+                                    </arguments>
+                                </configuration>
                             </execution>
-                        </executions>
-                        <configuration>
-                            <toolchains>
-                                <jdk>
-                                    <version>11</version>
-                                    <vendor>openjdk</vendor>
-                                </jdk>
-                            </toolchains>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>-XX:+UnlockExperimentalVMOptions</argument>
-                                <argument>-XX:+EnableJVMCI</argument>
-                                <argument>-XX:+UseJVMCICompiler</argument>
-                                <argument>bnymellon.codekatas.jmhkata.IntListJMHBenchmarkTest
-                                </argument>
-                            </arguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>OpenJDK11GraalPerson</id>
-            <dependencies>
-                <dependency>
-                    <groupId>javax.annotation</groupId>
-                    <artifactId>javax.annotation-api</artifactId>
-                    <version>1.3.1</version>
-                </dependency>
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.8.1</version>
-                        <configuration>
-                            <source>11</source>
-                            <target>11</target>
-                        </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-toolchains-plugin</artifactId>
-                        <version>1.1</version>
-                        <executions>
                             <execution>
+                                <id>transform</id>
                                 <goals>
-                                    <goal>toolchain</goal>
+                                    <goal>exec</goal>
                                 </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-XX:+UnlockExperimentalVMOptions</argument>
+                                        <argument>-XX:+EnableJVMCI</argument>
+                                        <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>
+                                            jvmscompare.benchmark.IntListTransform
+                                        </argument>
+                                        <argument>${execution.name}IntListTransform</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>filterOnly</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-XX:+UnlockExperimentalVMOptions</argument>
+                                        <argument>-XX:+EnableJVMCI</argument>
+                                        <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>jvmscompare.benchmark.PersonFilterOnly</argument>
+                                        <argument>${execution.name}PersonFilter</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>filterAndGroup</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-XX:+UnlockExperimentalVMOptions</argument>
+                                        <argument>-XX:+EnableJVMCI</argument>
+                                        <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>jvmscompare.benchmark.PersonFilterAndGroup</argument>
+                                        <argument>${execution.name}PersonFilterAndGroup</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>intSummaryStats</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-XX:+UnlockExperimentalVMOptions</argument>
+                                        <argument>-XX:+EnableJVMCI</argument>
+                                        <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>jvmscompare.benchmark.PersonIntSummaryStats</argument>
+                                        <argument>${execution.name}PersonIntSummaryStats</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>combinedSummaryStats</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-XX:+UnlockExperimentalVMOptions</argument>
+                                        <argument>-XX:+EnableJVMCI</argument>
+                                        <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>jvmscompare.benchmark.PersonCombinedSummaryStats</argument>
+                                        <argument>${execution.name}PersonCombinedSummaryStats</argument>
+                                    </arguments>
+                                </configuration>
                             </execution>
                         </executions>
-                        <configuration>
-                            <toolchains>
-                                <jdk>
-                                    <version>11</version>
-                                    <vendor>openjdk</vendor>
-                                </jdk>
-                            </toolchains>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.5.0</version>
-
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>-XX:+UnlockExperimentalVMOptions</argument>
-                                <argument>-XX:+EnableJVMCI</argument>
-                                <argument>-XX:+UseJVMCICompiler</argument>
-                                <argument>bnymellon.codekatas.jmhkata.PersonJMHBenchmarkTest
-                                </argument>
-                            </arguments>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
         </profile>
-
     </profiles>
 </project>

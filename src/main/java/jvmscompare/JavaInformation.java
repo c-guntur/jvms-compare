@@ -1,4 +1,4 @@
-package bnymellon.codekatas.jmhkata;
+package jvmscompare;
 
 public class JavaInformation {
 

@@ -1,30 +1,6 @@
-/*
- * Copyright 2018 BNY Mellon.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package jvmscompare.benchmark;
 
-package bnymellon.codekatas.jmhkata;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PrimitiveIterator;
-import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-
+import jvmscompare.JavaInformation;
 import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.api.list.primitive.IntList;
 import org.eclipse.collections.impl.factory.primitive.IntLists;
@@ -38,17 +14,27 @@ import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.TimeValue;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PrimitiveIterator;
+import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+
 @State(Scope.Thread)
 @BenchmarkMode(Mode.Throughput)
 @OutputTimeUnit(TimeUnit.SECONDS)
 @Fork(2)
-public class IntListJMHBenchmarkTest
+public class IntListTransform
 {
     private List<Integer> jdkList;
     private IntList ecIntList;
@@ -69,8 +55,10 @@ public class IntListJMHBenchmarkTest
     public static void main(String[] args) throws RunnerException
     {
         new JavaInformation().printJavaInformation();
-        Options options = new OptionsBuilder().include(".*" + IntListJMHBenchmarkTest.class.getSimpleName() + ".*")
+        Options options = new OptionsBuilder().include(".*" + IntListTransform.class.getSimpleName() + ".*")
                 .forks(2)
+                .resultFormat(ResultFormatType.JSON)
+                .result("benchmark-results/int-list-transform/" + args[0] + ".json")
                 .warmupIterations(10)
                 .warmupTime(TimeValue.seconds(5L))
                 .measurementIterations(10)
@@ -80,66 +68,6 @@ public class IntListJMHBenchmarkTest
                 .timeUnit(TimeUnit.SECONDS)
                 .build();
         new Runner(options).run();
-    }
-
-    @Benchmark
-    public long sumJDK()
-    {
-        return this.jdkList.stream().mapToLong(i -> i).sum();
-    }
-
-    @Benchmark
-    public long sumJDKParallel()
-    {
-        return this.jdkList.parallelStream().mapToLong(i -> i).sum();
-    }
-
-    @Benchmark
-    public long sumECPrimitive()
-    {
-        return this.ecIntList.sum();
-    }
-
-    @Benchmark
-    public long sumEC()
-    {
-        return this.ecList.sumOfInt(i -> i);
-    }
-
-    @Benchmark
-    public long sumECParallel()
-    {
-        return this.ecList.asParallel(this.executor, 100_000).sumOfInt(i -> i);
-    }
-
-    @Benchmark
-    public List<Integer> filterJDKBoxed()
-    {
-        return this.jdkList.stream().filter(i -> i % 2 == 0).collect(Collectors.toList());
-    }
-
-    @Benchmark
-    public List<Integer> filterJDKBoxedParallel()
-    {
-        return this.jdkList.parallelStream().filter(i -> i % 2 == 0).collect(Collectors.toList());
-    }
-
-    @Benchmark
-    public IntList filterECPrimitive()
-    {
-        return this.ecIntList.select(i -> i % 2 == 0);
-    }
-
-    @Benchmark
-    public MutableList<Integer> filterEC()
-    {
-        return this.ecList.select(i -> i % 2 == 0);
-    }
-
-    @Benchmark
-    public MutableList<Integer> filterECParallel()
-    {
-        return this.ecList.asParallel(this.executor, 100_000).select(i -> i % 2 == 0).toList();
     }
 
     @Benchmark
