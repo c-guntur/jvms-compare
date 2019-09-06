@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-export MAVEN_OPTS=
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home
+export MAVEN_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler"
 #IntList
 mvn -P OpenJDK11Graal clean test exec:exec -t toolchains.xml > output/07_OpenJDK11GraalIntListFilter.txt 2>&1
 mvn -P OpenJDK11Graal clean test exec:exec@sum -t toolchains.xml > output/07_OpenJDK11GraalIntListSum.txt 2>&1

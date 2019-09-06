@@ -20,13 +20,13 @@ GraalVM CE, GraalVM EE, OpenJDK 8, Oracle JDK 8.
 ### Samples:
 
   #### Setting GRAALVM_CE_HOME
-    `export GRAALVM_CE_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-1.0.0-rc13/Contents/Home/`
+    `export GRAALVM_CE_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-19.2.0/Contents/Home/`
 
 #### Setting GRAALVM_EE_HOME
-    `export GRAALVM_EE_HOME=/Library/Java/JavaVirtualMachines/graalvm-ee-1.0.0-rc13/Contents/Home/`
+    `export GRAALVM_EE_HOME=/Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/`
 
 #### Setting ORACLE_JAVA8_HOME
-    `export ORACLE_JAVA8_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_212.jdk/Contents/Home/`
+    `export ORACLE_JAVA8_HOME=/Library/Java/JavaVirtualMachines/oraclejdk1.8.0_212.jdk/Contents/Home/`
 
 ## Usage
 
@@ -36,34 +36,42 @@ can be created by:
 1. copy/pasting an existing profile in the `pom.xml`.
 1. renaming the profile _**appropriately**, to reflect the toolchain and type of benchmark_.
 1. modifying the toolchain configuration in **maven-toolchains-plugin** to pick the right toolchain.
-1. updating the **exec-maven-plugin** to run the appropriate Benchmark class.
+1. {optionally} updating the **exec-maven-plugin** to run the appropriate Benchmark class.
 
 ### Default maven invocation
 The maven command to mvn -P **<profile name>**  clean test exec:exec -t toolchains.xml
 
-#### Run Oracle Java 8 with Primitive IntList Benchmarks
+#### Run Oracle Java 8 with Primitive IntList Filter Benchmarks
     export MAVEN_OPTS=
-    mvn -P OracleJava8IntList clean test exec:exec -t toolchains.xml 
+    mvn -P OracleJDK8,IntList clean test exec:exec -t toolchains.xml 
 
-#### Run Oracle Java 8 with Object Benchmarks
+#### Run Oracle Java 8 with Primitive IntList Sum Benchmarks (see IntList profile in [pom.xml](pom.xml))
     export MAVEN_OPTS=
-    mvn -P OracleJava8Person clean test exec:exec -t toolchains.xml
+    mvn -P OracleJDK8,IntList clean test exec:exec@sum -t toolchains.xml 
 
-#### Run Graal VM EE with Primitive IntList Benchmarks
+#### Run Oracle Java 8 with Person IntSummaryStatistics Benchmarks
     export MAVEN_OPTS=
-    mvn -P GraalEEIntList clean test exec:exec -t toolchains.xml 
+    mvn -P OracleJDK8,Person clean test exec:exec@intSummaryStats -t toolchains.xml
 
-#### Run Graal VM EE with Object Benchmarks
+#### Run Graal VM EE with Primitive IntList Filter Benchmarks
     export MAVEN_OPTS=
-    mvn -P GraalEEPerson clean test exec:exec -t toolchains.xml
+    mvn -P GraalEE,IntList clean test exec:exec -t toolchains.xml 
 
-#### Run Graal VM EE using C2 Compiler with Primitive IntList Benchmarks
+#### Run Graal VM EE with Primitive IntList Sum Benchmarks (see IntList profile in [pom.xml](pom.xml))
+    export MAVEN_OPTS=
+    mvn -P GraalEE,IntList clean test exec:exec@sum -t toolchains.xml 
+
+#### Run Graal VM EE with Person IntSummaryStatistics Benchmarks
+    export MAVEN_OPTS=
+    mvn -P GraalEE,Person clean test exec:exec@intSummaryStats -t toolchains.xml
+
+#### Run Graal VM EE using C2 Compiler with Primitive IntList Filter Benchmarks
+    export MAVEN_OPTS=
+    mvn -P GraalEEHotspot clean test exec:exec -t toolchains.xml 
+
+#### Run Graal VM EE using C2 Compiler with Person IntSummary Statistics Benchmarks
     export MAVEN_OPTS="-XX:+UnlockExperimentalVMOptions -XX:-UseJVMCICompiler"
-    mvn -P GraalEEIntList clean test exec:exec -t toolchains.xml 
-
-#### Run Graal VM EE using C2 Compiler with Object Benchmarks
-    export MAVEN_OPTS="-XX:+UnlockExperimentalVMOptions -XX:-UseJVMCICompiler"
-    mvn -P GraalEEIntList clean test exec:exec -t toolchains.xml 
+    mvn -P GraalEEHotspot clean test exec:exec@intSummaryStats -t toolchains.xml 
 
 ## Notes on toolchains
 
@@ -72,23 +80,33 @@ As of Apache Maven 3.6.1, there is a bug that prevents using an environment vari
 
 Update the `toolchains.xml` locally and point to:
  
-* the location of a GraalVM HOME at line 59.
-* the location of an Oracle Java 8 HOME at line 70.
+* the location of the toolchain's JDK
 
 Additional toolchains can also be added if more JDK distros are being tested.
 
-## How to run embedded VMs
+## Run ALL Benchmarks
 
-### Running the embedded GraalVM in Oracle JDK 8
+There is a root run-all.sh that runas all 8 JDKs against the 7 benchmark classes. 
 
-Two steps are needed to run the GraalVM CE embedded in Oracle Java 8
+**This shell script deletes all existing results**
 
-1. Export the maven options:
-   export MAVEN_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler"
-2. Run the OracleJava8 profiles (either one below)
-   * `mvn -P OracleJava8Person clean test exec:exec -t toolchains.xml`
-   * `mvn -P OracleJava8IntList clean test exec:exec -t toolchains.xml` 
-   
-### Running the embedded Hotspot in GraalVM EE 19.1.1
+You can also run individual shell scripts that a re prefixed with a number. These numbered 
+shell scripts are per JDK/JVM being tested.
 
-???
+In order to delete existing outputs, use the below:
+
+### Delete all maven logs
+
+From the root folder, run:
+
+```
+find ./output/ -maxdepth 3 -type f -name "*.txt" -delete
+```
+
+### Delete all benchmark outputs in JSON
+
+From the root folder, run:
+
+```
+find ./benchmark-results/ -maxdepth 3 -type f -name "*.json" -delete
+``` 

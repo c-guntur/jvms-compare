@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8-openj9.jdk/Contents/Home
 export MAVEN_OPTS=
 #IntList
 mvn -P AdoptOpenJDK8OpenJ9,IntList clean test exec:exec -t toolchains.xml > output/05_AdoptOpenJDK8OpenJ9IntListFilter.txt 2>&1

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home
 export MAVEN_OPTS=
 #IntList
 mvn -P OpenJDK11Hotspot,IntList clean test exec:exec -t toolchains.xml > output/06_OpenJDK11HotspotIntListFilter.txt 2>&1
