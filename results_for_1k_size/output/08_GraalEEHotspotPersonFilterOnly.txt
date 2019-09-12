@@ -1,0 +1,341 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< jvms-compare:jvms-compare >----------------------
+[INFO] Building JVMs Compare 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ jvms-compare ---
+[INFO] Deleting /Users/cguntur/projects/conf/jvms-compare/target
+[INFO] 
+[INFO] --- maven-toolchains-plugin:1.1:toolchain (default) @ jvms-compare ---
+[INFO] Required toolchain: jdk [ vendor='graalvmee' version='8' ]
+[INFO] Found matching toolchain for type jdk: JDK[/Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/]
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:build-classpath (build-classpath) @ jvms-compare ---
+[INFO] Dependencies classpath:
+/Users/cguntur/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:/Users/cguntur/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.5.0/junit-jupiter-api-5.5.0.jar:/Users/cguntur/.m2/repository/org/eclipse/collections/eclipse-collections/10.0.0/eclipse-collections-10.0.0.jar:/Users/cguntur/.m2/repository/javax/annotation/javax.annotation-api/1.3.1/javax.annotation-api-1.3.1.jar:/Users/cguntur/.m2/repository/org/openjdk/jmh/jmh-core/1.9.3/jmh-core-1.9.3.jar:/Users/cguntur/.m2/repository/org/junit/platform/junit-platform-engine/1.5.0/junit-platform-engine-1.5.0.jar:/Users/cguntur/.m2/repository/org/junit/platform/junit-platform-commons/1.5.0/junit-platform-commons-1.5.0.jar:/Users/cguntur/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.5.0/junit-jupiter-params-5.5.0.jar:/Users/cguntur/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.5.0/junit-jupiter-engine-5.5.0.jar:/Users/cguntur/.m2/repository/org/junit/jupiter/junit-jupiter/5.5.0/junit-jupiter-5.5.0.jar:/Users/cguntur/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/cguntur/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/cguntur/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/Users/cguntur/.m2/repository/org/eclipse/collections/eclipse-collections-api/10.0.0/eclipse-collections-api-10.0.0.jar
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jvms-compare ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/cguntur/projects/conf/jvms-compare/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ jvms-compare ---
+[INFO] Toolchain in maven-compiler-plugin: JDK[/Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/]
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to /Users/cguntur/projects/conf/jvms-compare/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jvms-compare ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/cguntur/projects/conf/jvms-compare/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ jvms-compare ---
+[INFO] Toolchain in maven-compiler-plugin: JDK[/Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/]
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /Users/cguntur/projects/conf/jvms-compare/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ jvms-compare ---
+[INFO] Toolchain in surefire-plugin: JDK[/Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/]
+[INFO] Surefire report directory: /Users/cguntur/projects/conf/jvms-compare/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running jvmscompare.PersonTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.555 sec
+Running jvmscompare.IntListTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 sec
+
+Results :
+
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- exec-maven-plugin:1.6.0:exec (filterOnly) @ jvms-compare ---
+[INFO] Toolchain in exec-maven-plugin: JDK[/Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/]
+Java Runtime Environment version: 1.8.0_221
+Java Runtime Environment vendor: Oracle Corporation
+
+Java Runtime Name: Java(TM) SE Runtime Environment
+Java Runtime Version: 1.8.0_221-b11
+
+Java Virtual Machine name: Java HotSpot(TM) 64-Bit GraalVM EE 19.2.0
+Java Virtual Machine vendor: Oracle Corporation
+Java Virtual Machine version: 25.221-b11-jvmci-19.2-b02
+
+Java Class Version: 52.0
+
+# JMH 1.9.3 (released 1578 days ago, please consider updating!)
+# VM invoker: /Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/jre/bin/java
+# VM options: -XX:+UnlockExperimentalVMOptions -XX:-UseJVMCICompiler
+# Warmup: 5 iterations, 2 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 s per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jvmscompare.benchmark.PersonFilterOnly.filterECEager_parallel
+
+# Run progress: 0.00% complete, ETA 00:04:00
+# Fork: 1 of 2
+# Warmup Iteration   1: 38583.104 ops/s
+# Warmup Iteration   2: 87110.822 ops/s
+# Warmup Iteration   3: 87338.521 ops/s
+# Warmup Iteration   4: 86049.483 ops/s
+# Warmup Iteration   5: 85993.352 ops/s
+Iteration   1: 85083.378 ops/s
+Iteration   2: 85899.347 ops/s
+Iteration   3: 86205.448 ops/s
+Iteration   4: 86093.196 ops/s
+Iteration   5: 84712.559 ops/s
+
+# Run progress: 8.33% complete, ETA 00:03:46
+# Fork: 2 of 2
+# Warmup Iteration   1: 36685.436 ops/s
+# Warmup Iteration   2: 89065.410 ops/s
+# Warmup Iteration   3: 88213.329 ops/s
+# Warmup Iteration   4: 88209.957 ops/s
+# Warmup Iteration   5: 88112.061 ops/s
+Iteration   1: 88326.440 ops/s
+Iteration   2: 87825.338 ops/s
+Iteration   3: 88450.458 ops/s
+Iteration   4: 87535.294 ops/s
+Iteration   5: 88400.093 ops/s
+
+
+Result "filterECEager_parallel":
+  86853.155 ±(99.9%) 2146.772 ops/s [Average]
+  (min, avg, max) = (84712.559, 86853.155, 88450.458), stdev = 1419.957
+  CI (99.9%): [84706.383, 88999.927] (assumes normal distribution)
+
+
+# JMH 1.9.3 (released 1578 days ago, please consider updating!)
+# VM invoker: /Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/jre/bin/java
+# VM options: -XX:+UnlockExperimentalVMOptions -XX:-UseJVMCICompiler
+# Warmup: 5 iterations, 2 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 s per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jvmscompare.benchmark.PersonFilterOnly.filterECEager_serial
+
+# Run progress: 16.67% complete, ETA 00:03:25
+# Fork: 1 of 2
+# Warmup Iteration   1: 60301.838 ops/s
+# Warmup Iteration   2: 72703.408 ops/s
+# Warmup Iteration   3: 82387.118 ops/s
+# Warmup Iteration   4: 82237.133 ops/s
+# Warmup Iteration   5: 81569.815 ops/s
+Iteration   1: 81706.069 ops/s
+Iteration   2: 80738.512 ops/s
+Iteration   3: 80582.436 ops/s
+Iteration   4: 82010.259 ops/s
+Iteration   5: 80617.255 ops/s
+
+# Run progress: 25.00% complete, ETA 00:03:04
+# Fork: 2 of 2
+# Warmup Iteration   1: 60220.366 ops/s
+# Warmup Iteration   2: 70675.872 ops/s
+# Warmup Iteration   3: 77719.264 ops/s
+# Warmup Iteration   4: 81992.020 ops/s
+# Warmup Iteration   5: 80223.640 ops/s
+Iteration   1: 80685.447 ops/s
+Iteration   2: 80754.735 ops/s
+Iteration   3: 79967.234 ops/s
+Iteration   4: 79995.550 ops/s
+Iteration   5: 79248.999 ops/s
+
+
+Result "filterECEager_serial":
+  80630.650 ±(99.9%) 1218.358 ops/s [Average]
+  (min, avg, max) = (79248.999, 80630.650, 82010.259), stdev = 805.869
+  CI (99.9%): [79412.291, 81849.008] (assumes normal distribution)
+
+
+# JMH 1.9.3 (released 1578 days ago, please consider updating!)
+# VM invoker: /Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/jre/bin/java
+# VM options: -XX:+UnlockExperimentalVMOptions -XX:-UseJVMCICompiler
+# Warmup: 5 iterations, 2 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 s per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jvmscompare.benchmark.PersonFilterOnly.filterECLazy_parallel
+
+# Run progress: 33.33% complete, ETA 00:02:43
+# Fork: 1 of 2
+# Warmup Iteration   1: 28417.329 ops/s
+# Warmup Iteration   2: 42309.338 ops/s
+# Warmup Iteration   3: 41547.441 ops/s
+# Warmup Iteration   4: 44309.581 ops/s
+# Warmup Iteration   5: 45345.453 ops/s
+Iteration   1: 45101.438 ops/s
+Iteration   2: 45398.906 ops/s
+Iteration   3: 45206.059 ops/s
+Iteration   4: 45320.920 ops/s
+Iteration   5: 45343.636 ops/s
+
+# Run progress: 41.67% complete, ETA 00:02:23
+# Fork: 2 of 2
+# Warmup Iteration   1: 33910.122 ops/s
+# Warmup Iteration   2: 50464.680 ops/s
+# Warmup Iteration   3: 48761.917 ops/s
+# Warmup Iteration   4: 51763.848 ops/s
+# Warmup Iteration   5: 51433.242 ops/s
+Iteration   1: 51735.487 ops/s
+Iteration   2: 52581.561 ops/s
+Iteration   3: 52463.526 ops/s
+Iteration   4: 52308.134 ops/s
+Iteration   5: 52037.155 ops/s
+
+
+Result "filterECLazy_parallel":
+  48749.682 ±(99.9%) 5550.647 ops/s [Average]
+  (min, avg, max) = (45101.438, 48749.682, 52581.561), stdev = 3671.410
+  CI (99.9%): [43199.035, 54300.330] (assumes normal distribution)
+
+
+# JMH 1.9.3 (released 1578 days ago, please consider updating!)
+# VM invoker: /Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/jre/bin/java
+# VM options: -XX:+UnlockExperimentalVMOptions -XX:-UseJVMCICompiler
+# Warmup: 5 iterations, 2 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 s per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jvmscompare.benchmark.PersonFilterOnly.filterECLazy_serial
+
+# Run progress: 50.00% complete, ETA 00:02:02
+# Fork: 1 of 2
+# Warmup Iteration   1: 107540.118 ops/s
+# Warmup Iteration   2: 139075.682 ops/s
+# Warmup Iteration   3: 149419.210 ops/s
+# Warmup Iteration   4: 146100.380 ops/s
+# Warmup Iteration   5: 163160.784 ops/s
+Iteration   1: 163226.466 ops/s
+Iteration   2: 163225.656 ops/s
+Iteration   3: 163707.171 ops/s
+Iteration   4: 161213.185 ops/s
+Iteration   5: 161970.965 ops/s
+
+# Run progress: 58.33% complete, ETA 00:01:42
+# Fork: 2 of 2
+# Warmup Iteration   1: 81117.635 ops/s
+# Warmup Iteration   2: 110045.817 ops/s
+# Warmup Iteration   3: 104552.679 ops/s
+# Warmup Iteration   4: 123001.800 ops/s
+# Warmup Iteration   5: 122457.364 ops/s
+Iteration   1: 123396.742 ops/s
+Iteration   2: 123242.351 ops/s
+Iteration   3: 123350.929 ops/s
+Iteration   4: 123236.052 ops/s
+Iteration   5: 123632.522 ops/s
+
+
+Result "filterECLazy_serial":
+  143020.204 ±(99.9%) 31330.439 ops/s [Average]
+  (min, avg, max) = (123236.052, 143020.204, 163707.171), stdev = 20723.146
+  CI (99.9%): [111689.765, 174350.643] (assumes normal distribution)
+
+
+# JMH 1.9.3 (released 1578 days ago, please consider updating!)
+# VM invoker: /Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/jre/bin/java
+# VM options: -XX:+UnlockExperimentalVMOptions -XX:-UseJVMCICompiler
+# Warmup: 5 iterations, 2 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 s per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jvmscompare.benchmark.PersonFilterOnly.filterECStream_parallel
+
+# Run progress: 66.67% complete, ETA 00:01:21
+# Fork: 1 of 2
+# Warmup Iteration   1: 31210.047 ops/s
+# Warmup Iteration   2: 32097.324 ops/s
+# Warmup Iteration   3: 34800.324 ops/s
+# Warmup Iteration   4: 37808.128 ops/s
+# Warmup Iteration   5: 39019.326 ops/s
+Iteration   1: 36734.411 ops/s
+Iteration   2: 42971.998 ops/s
+Iteration   3: 44667.393 ops/s
+Iteration   4: 35518.863 ops/s
+Iteration   5: 36947.110 ops/s
+
+# Run progress: 75.00% complete, ETA 00:01:01
+# Fork: 2 of 2
+# Warmup Iteration   1: 32390.320 ops/s
+# Warmup Iteration   2: 31727.394 ops/s
+# Warmup Iteration   3: 35252.170 ops/s
+# Warmup Iteration   4: 34523.819 ops/s
+# Warmup Iteration   5: 37461.352 ops/s
+Iteration   1: 38212.536 ops/s
+Iteration   2: 37307.984 ops/s
+Iteration   3: 40116.873 ops/s
+Iteration   4: 38923.093 ops/s
+Iteration   5: 37899.864 ops/s
+
+
+Result "filterECStream_parallel":
+  38930.013 ±(99.9%) 4371.895 ops/s [Average]
+  (min, avg, max) = (35518.863, 38930.013, 44667.393), stdev = 2891.738
+  CI (99.9%): [34558.118, 43301.907] (assumes normal distribution)
+
+
+# JMH 1.9.3 (released 1578 days ago, please consider updating!)
+# VM invoker: /Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/jre/bin/java
+# VM options: -XX:+UnlockExperimentalVMOptions -XX:-UseJVMCICompiler
+# Warmup: 5 iterations, 2 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 s per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jvmscompare.benchmark.PersonFilterOnly.filterJDK_parallel
+
+# Run progress: 83.33% complete, ETA 00:00:40
+# Fork: 1 of 2
+# Warmup Iteration   1: 29778.850 ops/s
+# Warmup Iteration   2: 33240.617 ops/s
+# Warmup Iteration   3: 31403.735 ops/s
+# Warmup Iteration   4: 33067.797 ops/s
+# Warmup Iteration   5: 33189.119 ops/s
+Iteration   1: 33340.581 ops/s
+Iteration   2: 33239.095 ops/s
+Iteration   3: 33297.715 ops/s
+Iteration   4: 33097.311 ops/s
+Iteration   5: 36369.742 ops/s
+
+# Run progress: 91.67% complete, ETA 00:00:20
+# Fork: 2 of 2
+# Warmup Iteration   1: 28753.598 ops/s
+# Warmup Iteration   2: 31146.220 ops/s
+# Warmup Iteration   3: 29805.770 ops/s
+# Warmup Iteration   4: 41326.734 ops/s
+# Warmup Iteration   5: 33852.640 ops/s
+Iteration   1: 36856.075 ops/s
+Iteration   2: 36265.023 ops/s
+Iteration   3: 33766.029 ops/s
+Iteration   4: 32622.200 ops/s
+Iteration   5: 33542.109 ops/s
+
+
+Result "filterJDK_parallel":
+  34239.588 ±(99.9%) 2407.065 ops/s [Average]
+  (min, avg, max) = (32622.200, 34239.588, 36856.075), stdev = 1592.124
+  CI (99.9%): [31832.523, 36646.653] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:04:05
+
+Benchmark                                  Mode  Cnt       Score       Error  Units
+PersonFilterOnly.filterECEager_parallel   thrpt   10   86853.155 ±  2146.772  ops/s
+PersonFilterOnly.filterECEager_serial     thrpt   10   80630.650 ±  1218.358  ops/s
+PersonFilterOnly.filterECLazy_parallel    thrpt   10   48749.682 ±  5550.647  ops/s
+PersonFilterOnly.filterECLazy_serial      thrpt   10  143020.204 ± 31330.439  ops/s
+PersonFilterOnly.filterECStream_parallel  thrpt   10   38930.013 ±  4371.895  ops/s
+PersonFilterOnly.filterJDK_parallel       thrpt   10   34239.588 ±  2407.065  ops/s
+
+Benchmark result is saved to benchmark-results/person-filter-only/08_GraalEEC2PersonFilter.json
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  04:14 min
+[INFO] Finished at: 2019-09-09T09:13:58-04:00
+[INFO] ------------------------------------------------------------------------

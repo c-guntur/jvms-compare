@@ -1,0 +1,302 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< jvms-compare:jvms-compare >----------------------
+[INFO] Building JVMs Compare 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ jvms-compare ---
+[INFO] Deleting /Users/cguntur/projects/conf/jvms-compare/target
+[INFO] 
+[INFO] --- maven-toolchains-plugin:1.1:toolchain (default) @ jvms-compare ---
+[INFO] Required toolchain: jdk [ vendor='openjdk' version='11' ]
+[INFO] Found matching toolchain for type jdk: JDK[/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home]
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:build-classpath (build-classpath) @ jvms-compare ---
+[INFO] Dependencies classpath:
+/Users/cguntur/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:/Users/cguntur/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.5.0/junit-jupiter-api-5.5.0.jar:/Users/cguntur/.m2/repository/org/eclipse/collections/eclipse-collections/10.0.0/eclipse-collections-10.0.0.jar:/Users/cguntur/.m2/repository/javax/annotation/javax.annotation-api/1.3.1/javax.annotation-api-1.3.1.jar:/Users/cguntur/.m2/repository/org/openjdk/jmh/jmh-core/1.9.3/jmh-core-1.9.3.jar:/Users/cguntur/.m2/repository/org/junit/platform/junit-platform-engine/1.5.0/junit-platform-engine-1.5.0.jar:/Users/cguntur/.m2/repository/org/junit/platform/junit-platform-commons/1.5.0/junit-platform-commons-1.5.0.jar:/Users/cguntur/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.5.0/junit-jupiter-params-5.5.0.jar:/Users/cguntur/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.5.0/junit-jupiter-engine-5.5.0.jar:/Users/cguntur/.m2/repository/org/junit/jupiter/junit-jupiter/5.5.0/junit-jupiter-5.5.0.jar:/Users/cguntur/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/cguntur/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/cguntur/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/Users/cguntur/.m2/repository/org/eclipse/collections/eclipse-collections-api/10.0.0/eclipse-collections-api-10.0.0.jar
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jvms-compare ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/cguntur/projects/conf/jvms-compare/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ jvms-compare ---
+[INFO] Toolchain in maven-compiler-plugin: JDK[/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home]
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to /Users/cguntur/projects/conf/jvms-compare/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jvms-compare ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/cguntur/projects/conf/jvms-compare/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ jvms-compare ---
+[INFO] Toolchain in maven-compiler-plugin: JDK[/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home]
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /Users/cguntur/projects/conf/jvms-compare/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ jvms-compare ---
+[INFO] Toolchain in surefire-plugin: JDK[/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home]
+[INFO] Surefire report directory: /Users/cguntur/projects/conf/jvms-compare/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running jvmscompare.PersonTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.706 sec
+Running jvmscompare.IntListTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.11 sec
+
+Results :
+
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- exec-maven-plugin:1.6.0:exec (transform) @ jvms-compare ---
+[INFO] Toolchain in exec-maven-plugin: JDK[/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home]
+Java Runtime Environment version: 11.0.2
+Java Runtime Environment vendor: Oracle Corporation
+
+Java Runtime Name: OpenJDK Runtime Environment
+Java Runtime Version: 11.0.2+9
+
+Java Virtual Machine name: OpenJDK 64-Bit Server VM
+Java Virtual Machine vendor: Oracle Corporation
+Java Virtual Machine version: 11.0.2+9
+
+Java Class Version: 55.0
+
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.openjdk.jmh.util.Utils (file:/Users/cguntur/.m2/repository/org/openjdk/jmh/jmh-core/1.9.3/jmh-core-1.9.3.jar) to field java.io.Console.cs
+WARNING: Please consider reporting this to the maintainers of org.openjdk.jmh.util.Utils
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+# JMH 1.9.3 (released 1578 days ago, please consider updating!)
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 2 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 s per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jvmscompare.benchmark.IntListTransform.transformEC
+
+# Run progress: 0.00% complete, ETA 00:03:20
+# Fork: 1 of 2
+# Warmup Iteration   1: 146234.954 ops/s
+# Warmup Iteration   2: 178351.607 ops/s
+# Warmup Iteration   3: 182244.896 ops/s
+# Warmup Iteration   4: 180018.238 ops/s
+# Warmup Iteration   5: 179102.031 ops/s
+Iteration   1: 178750.098 ops/s
+Iteration   2: 178846.465 ops/s
+Iteration   3: 179282.615 ops/s
+Iteration   4: 180123.530 ops/s
+Iteration   5: 182800.932 ops/s
+
+# Run progress: 10.00% complete, ETA 00:03:08
+# Fork: 2 of 2
+# Warmup Iteration   1: 136643.810 ops/s
+# Warmup Iteration   2: 163037.528 ops/s
+# Warmup Iteration   3: 155725.535 ops/s
+# Warmup Iteration   4: 153238.048 ops/s
+# Warmup Iteration   5: 159024.615 ops/s
+Iteration   1: 160650.630 ops/s
+Iteration   2: 157389.656 ops/s
+Iteration   3: 161964.957 ops/s
+Iteration   4: 153267.709 ops/s
+Iteration   5: 158374.545 ops/s
+
+
+Result "transformEC":
+  169145.114 ±(99.9%) 17646.588 ops/s [Average]
+  (min, avg, max) = (153267.709, 169145.114, 182800.932), stdev = 11672.126
+  CI (99.9%): [151498.525, 186791.702] (assumes normal distribution)
+
+
+# JMH 1.9.3 (released 1578 days ago, please consider updating!)
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 2 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 s per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jvmscompare.benchmark.IntListTransform.transformECParallel
+
+# Run progress: 20.00% complete, ETA 00:02:47
+# Fork: 1 of 2
+# Warmup Iteration   1: 25301.202 ops/s
+# Warmup Iteration   2: 36573.701 ops/s
+# Warmup Iteration   3: 38766.955 ops/s
+# Warmup Iteration   4: 39348.329 ops/s
+# Warmup Iteration   5: 40697.891 ops/s
+Iteration   1: 39305.896 ops/s
+Iteration   2: 40241.900 ops/s
+Iteration   3: 39857.884 ops/s
+Iteration   4: 39436.440 ops/s
+Iteration   5: 38348.878 ops/s
+
+# Run progress: 30.00% complete, ETA 00:02:26
+# Fork: 2 of 2
+# Warmup Iteration   1: 27155.323 ops/s
+# Warmup Iteration   2: 37513.187 ops/s
+# Warmup Iteration   3: 37737.852 ops/s
+# Warmup Iteration   4: 38009.434 ops/s
+# Warmup Iteration   5: 37114.241 ops/s
+Iteration   1: 37950.785 ops/s
+Iteration   2: 37819.644 ops/s
+Iteration   3: 38261.828 ops/s
+Iteration   4: 38477.788 ops/s
+Iteration   5: 36617.938 ops/s
+
+
+Result "transformECParallel":
+  38631.898 ±(99.9%) 1642.082 ops/s [Average]
+  (min, avg, max) = (36617.938, 38631.898, 40241.900), stdev = 1086.136
+  CI (99.9%): [36989.816, 40273.980] (assumes normal distribution)
+
+
+# JMH 1.9.3 (released 1578 days ago, please consider updating!)
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 2 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 s per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jvmscompare.benchmark.IntListTransform.transformECPrimitive
+
+# Run progress: 40.00% complete, ETA 00:02:05
+# Fork: 1 of 2
+# Warmup Iteration   1: 160000.799 ops/s
+# Warmup Iteration   2: 191633.033 ops/s
+# Warmup Iteration   3: 184939.606 ops/s
+# Warmup Iteration   4: 194463.501 ops/s
+# Warmup Iteration   5: 197739.372 ops/s
+Iteration   1: 199134.921 ops/s
+Iteration   2: 197518.267 ops/s
+Iteration   3: 199238.420 ops/s
+Iteration   4: 199677.874 ops/s
+Iteration   5: 199808.462 ops/s
+
+# Run progress: 50.00% complete, ETA 00:01:44
+# Fork: 2 of 2
+# Warmup Iteration   1: 141165.325 ops/s
+# Warmup Iteration   2: 187745.408 ops/s
+# Warmup Iteration   3: 198418.413 ops/s
+# Warmup Iteration   4: 200133.996 ops/s
+# Warmup Iteration   5: 199596.260 ops/s
+Iteration   1: 199802.519 ops/s
+Iteration   2: 199823.349 ops/s
+Iteration   3: 198985.091 ops/s
+Iteration   4: 199347.995 ops/s
+Iteration   5: 197478.683 ops/s
+
+
+Result "transformECPrimitive":
+  199081.558 ±(99.9%) 1340.443 ops/s [Average]
+  (min, avg, max) = (197478.683, 199081.558, 199823.349), stdev = 886.620
+  CI (99.9%): [197741.116, 200422.001] (assumes normal distribution)
+
+
+# JMH 1.9.3 (released 1578 days ago, please consider updating!)
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 2 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 s per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jvmscompare.benchmark.IntListTransform.transformJDKBoxed
+
+# Run progress: 60.00% complete, ETA 00:01:23
+# Fork: 1 of 2
+# Warmup Iteration   1: 63685.715 ops/s
+# Warmup Iteration   2: 77405.953 ops/s
+# Warmup Iteration   3: 77405.959 ops/s
+# Warmup Iteration   4: 77347.282 ops/s
+# Warmup Iteration   5: 76753.800 ops/s
+Iteration   1: 77217.614 ops/s
+Iteration   2: 77355.310 ops/s
+Iteration   3: 77463.297 ops/s
+Iteration   4: 77722.917 ops/s
+Iteration   5: 77292.276 ops/s
+
+# Run progress: 70.00% complete, ETA 00:01:02
+# Fork: 2 of 2
+# Warmup Iteration   1: 51465.970 ops/s
+# Warmup Iteration   2: 57507.460 ops/s
+# Warmup Iteration   3: 57481.482 ops/s
+# Warmup Iteration   4: 57861.198 ops/s
+# Warmup Iteration   5: 57556.200 ops/s
+Iteration   1: 57322.854 ops/s
+Iteration   2: 57880.850 ops/s
+Iteration   3: 57895.361 ops/s
+Iteration   4: 57221.177 ops/s
+Iteration   5: 56669.775 ops/s
+
+
+Result "transformJDKBoxed":
+  67404.143 ±(99.9%) 15955.731 ops/s [Average]
+  (min, avg, max) = (56669.775, 67404.143, 77722.917), stdev = 10553.728
+  CI (99.9%): [51448.412, 83359.875] (assumes normal distribution)
+
+
+# JMH 1.9.3 (released 1578 days ago, please consider updating!)
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 2 s each
+# Measurement: 5 iterations, 2 s each
+# Timeout: 10 s per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jvmscompare.benchmark.IntListTransform.transformJDKBoxedParallel
+
+# Run progress: 80.00% complete, ETA 00:00:41
+# Fork: 1 of 2
+# Warmup Iteration   1: 21188.899 ops/s
+# Warmup Iteration   2: 28269.427 ops/s
+# Warmup Iteration   3: 25049.502 ops/s
+# Warmup Iteration   4: 25077.662 ops/s
+# Warmup Iteration   5: 25716.935 ops/s
+Iteration   1: 25739.555 ops/s
+Iteration   2: 25526.476 ops/s
+Iteration   3: 24727.224 ops/s
+Iteration   4: 23352.004 ops/s
+Iteration   5: 22939.114 ops/s
+
+# Run progress: 90.00% complete, ETA 00:00:20
+# Fork: 2 of 2
+# Warmup Iteration   1: 19962.349 ops/s
+# Warmup Iteration   2: 23789.191 ops/s
+# Warmup Iteration   3: 24773.094 ops/s
+# Warmup Iteration   4: 24232.233 ops/s
+# Warmup Iteration   5: 24438.672 ops/s
+Iteration   1: 25942.947 ops/s
+Iteration   2: 27350.777 ops/s
+Iteration   3: 26777.850 ops/s
+Iteration   4: 24841.418 ops/s
+Iteration   5: 27109.538 ops/s
+
+
+Result "transformJDKBoxedParallel":
+  25430.690 ±(99.9%) 2257.014 ops/s [Average]
+  (min, avg, max) = (22939.114, 25430.690, 27350.777), stdev = 1492.875
+  CI (99.9%): [23173.676, 27687.704] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:03:28
+
+Benchmark                                    Mode  Cnt       Score       Error  Units
+IntListTransform.transformEC                thrpt   10  169145.114 ± 17646.588  ops/s
+IntListTransform.transformECParallel        thrpt   10   38631.898 ±  1642.082  ops/s
+IntListTransform.transformECPrimitive       thrpt   10  199081.558 ±  1340.443  ops/s
+IntListTransform.transformJDKBoxed          thrpt   10   67404.143 ± 15955.731  ops/s
+IntListTransform.transformJDKBoxedParallel  thrpt   10   25430.690 ±  2257.014  ops/s
+
+Benchmark result is saved to benchmark-results/int-list-transform/06_OpenJDK11HotspotIntListTransform.json
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  03:40 min
+[INFO] Finished at: 2019-09-09T08:13:28-04:00
+[INFO] ------------------------------------------------------------------------
