@@ -123,4 +123,14 @@ From the root folder, run:
 
 ```
 find ./benchmark-results/ -maxdepth 3 -type f -name "*.json" -delete
+
 ``` 
+
+### Delete all outputs and reset to empty
+
+From the root folder, run:
+
+```
+./setup.sh
+
+```
