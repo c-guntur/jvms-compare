@@ -37,11 +37,8 @@ public class PersonCombinedSummaryStats
                 .forks(2)
                 .resultFormat(ResultFormatType.JSON)
                 .result("benchmark-results/person-combined-summary-stats/" + args[0] + ".json")
-                .warmupIterations(10)
-                .warmupTime(TimeValue.seconds(5L))
+                .warmupIterations(20)
                 .measurementIterations(10)
-                .measurementTime(TimeValue.seconds(5L))
-                .timeout(TimeValue.seconds(20))
                 .mode(Mode.Throughput)
                 .timeUnit(TimeUnit.SECONDS)
                 .build();

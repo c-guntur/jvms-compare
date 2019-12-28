@@ -134,3 +134,13 @@ From the root folder, run:
 ./setup.sh
 
 ```
+
+
+### Experimenting with Results
+If you wish to experiment with the results of the benchmarks we have already run you can look at the folders:
+`results_for_1k_size` and `results_for_1M_size`.
+Notes about the results:
+* The results for each benchmark run is saved in it's own respective folder.
+* The results are saved as json files as well as maven build output.
+* For json files navigate to benchmark-results (For Eg. /results_for_1k_size/benchmark-results/int-lists-filter)
+* For maven build output navigate to output (For Eg. /results_for_1k_size/output/)
