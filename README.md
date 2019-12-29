@@ -13,14 +13,22 @@ GraalVM CE, GraalVM EE, OpenJDK 11, Oracle JDK 8.
 
 Sequence | JDK | Version |  Notes
 -------------- | ------------------ | ---------------------- | -------------------------------
-01 | Oracle JDK 8 | 1.8.0_221 | 
-02 | Graal VM EE | 19.2.0 | 
-03 | Graal VM CE | 19.2.0 | 
-04 | AdoptOpenJDK 8 w/Hotspot | 1.8.0_221 | 
-05 | AdoptOpenJDK 8 w/OpenJ9 | 1.8.0_221 | OpenJ9 build openj9-0.15.1
+01 | Oracle JDK 11 | 11.0.5 | 
+02 | Graal VM EE | 19.3.0.2 | 
+03 | Graal VM CE | 19.3.0.2 | 
+04 | AdoptOpenJDK 11 w/Hotspot | 11.0.5 +10 | 
+05 | AdoptOpenJDK 11 w/OpenJ9 | 11.0.5 +10 | OpenJ9 build openj9-0.17.0
 06 | OpenJDK 11 | 11.0.2 | 
 07 | OpenJDK 11 w/Graal | 11.0.2 | Experimental Option +UseJVMCICompiler
-08 | GraalEE w/C2 | 19.2.0 | Experimental Option -UseJVMCICompiler
+08 | GraalEE w/C2 | 19.3.0.2 | Experimental Option -UseJVMCICompiler
+
+## Links to download the JDKs
+1. Oracle JDK 11.0.5: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html
+1. GraalVM CE 19.3.0.2: https://github.com/graalvm/graalvm-ce-builds/releases
+1. GraalVM EE 19.3.0.2: https://www.oracle.com/downloads/graalvm-downloads.html
+1. AdoptOpenJDK Hotspot 11.0.5 +10: https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot
+1. AdoptOpenJDK OpenJ9 11.0.5 +10: https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=openj9 
+1. OpenJDK 11.0.2: https://jdk.java.net/archive/
 
 
 ## Setup Steps
