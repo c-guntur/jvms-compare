@@ -30,6 +30,15 @@ Sequence | JDK | Version |  Notes
 1. AdoptOpenJDK OpenJ9 11.0.5 +10: https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=openj9 
 1. OpenJDK 11.0.2: https://jdk.java.net/archive/
 
+#### NOTE: OS X Catalina Security - trusted executables.
+It is important to test each downloaded JDK before running the benchmarks, since some of the distrubutors 
+are not yet endorsed. TODO: create a script to test JDKs.
+
+Meanwhile, run a `java -version` by navigating to the HOME directory of each JDK from a terminal. 
+If any JDK throws a security constraint, the quick work-around is to remove the quarantine attribute:
+For instance for GraalVM CE 19.3.0.2:
+
+`xattr -d com.apple.quarantine /Library/Java/JavaVirtualMachines/graalvm-ee-java11-19.3.0.2/`
 
 ## Setup Steps
 
