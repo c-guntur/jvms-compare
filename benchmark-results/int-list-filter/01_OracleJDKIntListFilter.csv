@@ -1,7 +1,0 @@
-"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit"
-"jvmscompare.benchmark.IntListFilter.filterEC","thrpt",1,10,2687789.369815,145419.750366,"ops/s"
-"jvmscompare.benchmark.IntListFilter.filterECParallel","thrpt",1,10,80501.198009,1141.351430,"ops/s"
-"jvmscompare.benchmark.IntListFilter.filterECPrimitive","thrpt",1,10,3559629.916189,89621.605113,"ops/s"
-"jvmscompare.benchmark.IntListFilter.filterECPrimitiveParallelStream","thrpt",1,10,32534.599954,671.695298,"ops/s"
-"jvmscompare.benchmark.IntListFilter.filterJDKBoxed","thrpt",1,10,1662096.444649,2859.055249,"ops/s"
-"jvmscompare.benchmark.IntListFilter.filterJDKBoxedParallel","thrpt",1,10,44510.421718,1305.163856,"ops/s"

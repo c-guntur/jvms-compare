@@ -1,7 +1,0 @@
-"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit"
-"jvmscompare.benchmark.IntListSum.sumEC","thrpt",1,10,10270016.905071,40983.021252,"ops/s"
-"jvmscompare.benchmark.IntListSum.sumECParallel","thrpt",1,10,96660.646070,2317.725304,"ops/s"
-"jvmscompare.benchmark.IntListSum.sumECPrimitive","thrpt",1,10,31038273.789985,95293.319817,"ops/s"
-"jvmscompare.benchmark.IntListSum.sumECPrimitiveParallelStream","thrpt",1,10,63572.553572,14089.884416,"ops/s"
-"jvmscompare.benchmark.IntListSum.sumJDK","thrpt",1,10,6631479.827463,340937.043883,"ops/s"
-"jvmscompare.benchmark.IntListSum.sumJDKParallel","thrpt",1,10,62988.555116,9296.786396,"ops/s"

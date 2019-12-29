@@ -1,6 +1,0 @@
-"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit"
-"jvmscompare.benchmark.PersonIntSummaryStats.intSummaryStatisticsECEager_serial","thrpt",1,10,818335.196621,35364.587115,"ops/s"
-"jvmscompare.benchmark.PersonIntSummaryStats.intSummaryStatisticsECLazy_serial","thrpt",1,10,833302.737868,42153.177650,"ops/s"
-"jvmscompare.benchmark.PersonIntSummaryStats.intSummaryStatisticsECStream_parallel","thrpt",1,10,45778.676797,630.870403,"ops/s"
-"jvmscompare.benchmark.PersonIntSummaryStats.intSummaryStatisticsJDK_parallel","thrpt",1,10,19545.447156,341.723921,"ops/s"
-"jvmscompare.benchmark.PersonIntSummaryStats.intSummaryStatisticsJDK_serial","thrpt",1,10,232947.077249,535.358539,"ops/s"
