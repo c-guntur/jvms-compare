@@ -1,101 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
- | This is the toolchains file for Maven. It can be specified at two levels:
- |
- |  1. User Level. This toolchains.xml file provides configuration for a single user,
- |                 and is normally provided in ${user.home}/.m2/toolchains.xml.
- |
- |                 NOTE: This location can be overridden with the CLI option:
- |
- |                 -t /path/to/user/toolchains.xml
- |
- |  2. Global Level. This toolchains.xml file provides configuration for all Maven
- |                 users on a machine (assuming they're all using the same Maven
- |                 installation). It's normally provided in
- |                 ${maven.conf}/toolchains.xml.
- |
- |                 NOTE: This location can be overridden with the CLI option:
- |
- |                 -gt /path/to/global/toolchains.xml
- |
- |-->
 <toolchains xmlns="http://maven.apache.org/TOOLCHAINS/1.1.0"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://maven.apache.org/TOOLCHAINS/1.1.0 http://maven.apache.org/xsd/toolchains-1.1.0.xsd
 http://maven.apache.org/TOOLCHAINS/1.1.0 ">
-
-    <!--
-     | With toolchains you can refer to installations on your system. This
-     | way you don't have to hardcode paths in your pom.xml.
-     |
-     | Every toolchain consist of 3 elements:
-     | * type: the type of tool. An often used value is 'jdk'. Toolchains-aware
-     |   plugins should document which type you must use.
-     |
-     | * provides: A list of key/value-pairs.
-     |   Based on the toolchain-configuration in the pom.xml Maven will search for
-     |   matching <provides/> configuration. You can decide for yourself which key-value
-     |   pairs to use. Often used keys are 'version', 'vendor' and 'arch'. By default
-     |   the version has a special meaning. If you configured in the pom.xml '1.5'
-     |   Maven will search for 1.5 and above.
-     |
-     | * configuration: Additional configuration for this tool.
-     |   Look for documentation of the toolchains-aware plugin which configuration elements
-     |   can be used.
-     |
-     | See also https://maven.apache.org/guides/mini/guide-using-toolchains.html
-     |
-     | General example
-    -->
-
-    <toolchain>
-        <type>jdk</type>
-        <provides>
-            <version>8</version>
-            <vendor>graalvmee</vendor>
-        </provides>
-        <configuration>
-
-            <!-- As of Apache Maven 3.6.1, env. variables cannot be used in toolchains -->
-            <jdkHome>/Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/</jdkHome>
-
-            <!-- Env. variables will be usable after Apache Maven 3.6.2 only -->
-            <!-- <jdkHome>${env.GRAALVM_EE_HOME}</jdkHome> -->
-        </configuration>
-    </toolchain>
-
-    <toolchain>
-        <type>jdk</type>
-        <provides>
-            <version>8</version>
-            <vendor>graalvmce</vendor>
-        </provides>
-        <configuration>
-
-            <!-- As of Apache Maven 3.6.1, env. variables cannot be used in toolchains -->
-            <jdkHome>/Library/Java/JavaVirtualMachines/graalvm-ce-19.2.0/Contents/Home/</jdkHome>
-
-            <!-- Env. variables will be usable after Apache Maven 3.6.2 only -->
-            <!-- <jdkHome>${env.GRAALVM_CE_HOME}</jdkHome> -->
-        </configuration>
-    </toolchain>
-
-    <toolchain>
-        <type>jdk</type>
-        <provides>
-            <version>8</version>
-            <vendor>oracle</vendor>
-        </provides>
-        <configuration>
-
-            <!-- As of Apache Maven 3.6.1, env. variables cannot be used in toolchains -->
-            <jdkHome>/Library/Java/JavaVirtualMachines/oraclejdk1.8.0_221.jdk/Contents/Home/</jdkHome>
-
-            <!-- Env. variables will be usable after Apache Maven 3.6.2 only -->
-            <!-- <jdkHome>${ORACLE_JAVA8_HOME}</jdkHome> -->
-        </configuration>
-    </toolchain>
 
     <toolchain>
         <type>jdk</type>
@@ -104,12 +12,56 @@ http://maven.apache.org/TOOLCHAINS/1.1.0 ">
             <vendor>oracle</vendor>
         </provides>
         <configuration>
+<!--            <jdkHome>${env.ORACLE_JDK_11_HOME}</jdkHome>-->
+            <jdkHome>/Library/Java/JavaVirtualMachines/oraclejdk-11.0.5.jdk/Contents/Home/</jdkHome>
+        </configuration>
+    </toolchain>
 
-            <!-- As of Apache Maven 3.6.1, env. variables cannot be used in toolchains -->
-            <jdkHome>/Library/Java/JavaVirtualMachines/oraclejdk-11.0.4.jdk/Contents/Home</jdkHome>
+    <toolchain>
+        <type>jdk</type>
+        <provides>
+            <version>11</version>
+            <vendor>graalvmee</vendor>
+        </provides>
+        <configuration>
+<!--             <jdkHome>${env.GRAALVM_EE_19_HOME}</jdkHome>-->
+             <jdkHome>/Library/Java/JavaVirtualMachines/graalvm-ee-java11-19.3.0.2/</jdkHome>
+        </configuration>
+    </toolchain>
 
-            <!-- Env. variables will be usable after Apache Maven 3.6.2 only -->
-            <!-- <jdkHome>${ORACLE_JAVA11_HOME}</jdkHome> -->
+    <toolchain>
+        <type>jdk</type>
+        <provides>
+            <version>11</version>
+            <vendor>graalvmce</vendor>
+        </provides>
+        <configuration>
+<!--             <jdkHome>${env.GRAALVM_CE_19_HOME}</jdkHome>-->
+             <jdkHome>/Library/Java/JavaVirtualMachines/graalvm-ce-java11-19.3.0.2/Contents/Home/</jdkHome>
+        </configuration>
+    </toolchain>
+
+    <toolchain>
+        <type>jdk</type>
+        <provides>
+            <version>11</version>
+            <vendor>AdoptOpenJDKHotspot</vendor>
+        </provides>
+        <configuration>
+<!--             <jdkHome>${env.ADOPT_HOTSPOT_11_HOME}</jdkHome>-->
+             <jdkHome>/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/</jdkHome>
+        </configuration>
+    </toolchain>
+
+    <toolchain>
+        <type>jdk</type>
+        <provides>
+            <version>11</version>
+            <vendor>AdoptOpenJDKOpenJ9</vendor>
+        </provides>
+        <configuration>
+<!--             <jdkHome>${env.ADOPT_OPENJ9_11_HOME}</jdkHome>-->
+             <jdkHome>/Library/Java/JavaVirtualMachines/adoptopenjdk-11-openj9.jdk/Contents/Home/</jdkHome>
         </configuration>
     </toolchain>
 
@@ -120,44 +72,8 @@ http://maven.apache.org/TOOLCHAINS/1.1.0 ">
             <vendor>openjdk</vendor>
         </provides>
         <configuration>
-
-            <!-- As of Apache Maven 3.6.1, env. variables cannot be used in toolchains -->
-            <jdkHome>/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home</jdkHome>
-
-            <!-- Env. variables will be usable after Apache Maven 3.6.2 only -->
-            <!-- <jdkHome>${OPENJDK_JAVA11_HOME}</jdkHome> -->
-        </configuration>
-    </toolchain>
-
-    <toolchain>
-        <type>jdk</type>
-        <provides>
-            <version>8</version>
-            <vendor>AdoptOpenJDK8Hotspot</vendor>
-        </provides>
-        <configuration>
-
-            <!-- As of Apache Maven 3.6.1, env. variables cannot be used in toolchains -->
-            <jdkHome>/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/</jdkHome>
-
-            <!-- Env. variables will be usable after Apache Maven 3.6.2 only -->
-            <!-- <jdkHome>${ADOPTHOTSPOT_JAVA8_HOME}</jdkHome> -->
-        </configuration>
-    </toolchain>
-
-    <toolchain>
-        <type>jdk</type>
-        <provides>
-            <version>8</version>
-            <vendor>AdoptOpenJDK8OpenJ9</vendor>
-        </provides>
-        <configuration>
-
-            <!-- As of Apache Maven 3.6.1, env. variables cannot be used in toolchains -->
-            <jdkHome>/Library/Java/JavaVirtualMachines/adoptopenjdk-8-openj9.jdk/Contents/Home/</jdkHome>
-
-            <!-- Env. variables will be usable after Apache Maven 3.6.2 only -->
-            <!-- <jdkHome>${ADOPTOPENJ9_JAVA8_HOME}</jdkHome> -->
+<!--             <jdkHome>${env.OPENJDK_11_HOME}</jdkHome>-->
+             <jdkHome>/Library/Java/JavaVirtualMachines/openjdk-11.0.2.jdk/Contents/Home/</jdkHome>
         </configuration>
     </toolchain>
 

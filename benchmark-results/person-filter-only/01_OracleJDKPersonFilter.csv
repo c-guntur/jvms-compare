@@ -1,0 +1,8 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit"
+"jvmscompare.benchmark.PersonFilterOnly.filterECEager_parallel","thrpt",1,10,190610.755087,14640.823575,"ops/s"
+"jvmscompare.benchmark.PersonFilterOnly.filterECEager_serial","thrpt",1,10,1995101.368225,28856.101936,"ops/s"
+"jvmscompare.benchmark.PersonFilterOnly.filterECLazy_parallel","thrpt",1,10,81363.392469,3443.046962,"ops/s"
+"jvmscompare.benchmark.PersonFilterOnly.filterECLazy_serial","thrpt",1,10,1706241.242518,304231.258404,"ops/s"
+"jvmscompare.benchmark.PersonFilterOnly.filterECStream_parallel","thrpt",1,10,48770.721359,5910.800900,"ops/s"
+"jvmscompare.benchmark.PersonFilterOnly.filterJDK_parallel","thrpt",1,10,42839.431396,1990.326954,"ops/s"
+"jvmscompare.benchmark.PersonFilterOnly.filterJDK_serial","thrpt",1,10,446835.554368,35343.479970,"ops/s"

@@ -101,7 +101,7 @@ http://maven.apache.org/TOOLCHAINS/1.1.0 ">
         <type>jdk</type>
         <provides>
             <version>8</version>
-            <vendor>AdoptOpenJDK8Hotspot</vendor>
+            <vendor>AdoptOpenJDKHotspot</vendor>
         </provides>
         <configuration>
 
@@ -117,7 +117,7 @@ http://maven.apache.org/TOOLCHAINS/1.1.0 ">
         <type>jdk</type>
         <provides>
             <version>8</version>
-            <vendor>AdoptOpenJDK8OpenJ9</vendor>
+            <vendor>AdoptOpenJDKOpenJ9</vendor>
         </provides>
         <configuration>
 
