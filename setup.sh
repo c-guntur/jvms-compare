@@ -3,6 +3,7 @@
 # the benchmark-results directory has the JMH JSON data for each benchmark class
 rm -rf benchmark-results
 
+mkdir -p benchmark-results/int-list-filter
 mkdir -p benchmark-results/int-list-sum
 mkdir -p benchmark-results/int-list-transform
 mkdir -p benchmark-results/person-combined-summary-stats

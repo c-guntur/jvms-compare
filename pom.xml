@@ -26,9 +26,21 @@
         <eclipse-collections.version>10.0.0</eclipse-collections.version>
         <jmh.version>1.21</jmh.version>
         <junit.version>5.5.0</junit.version>
+        <benchmark.forks>2</benchmark.forks>
+        <benchmark.size>100</benchmark.size>
+        <benchmark.warmups>2</benchmark.warmups>
+        <benchmark.measurements>5</benchmark.measurements>
     </properties>
 
     <build>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
         <plugins>
 
             <plugin>

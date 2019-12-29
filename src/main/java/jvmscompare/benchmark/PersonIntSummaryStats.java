@@ -26,25 +26,22 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.TimeValue;
 
+import static jvmscompare.Environment.PARENT_OPTIONS;
+
 @State(Scope.Thread)
 @BenchmarkMode(Mode.Throughput)
 @OutputTimeUnit(TimeUnit.SECONDS)
-@Fork(2)
 public class PersonIntSummaryStats
 {
-    private static final ExecutorService EXECUTOR_SERVICE = Executors.newWorkStealingPool();
+    private static final String BENCHMARK_INCLUSION_REGEXP = ".*" + PersonIntSummaryStats.class.getSimpleName() + ".*";
+    private static final String BENCHMARK_RESULTS_DIRECTORY = "benchmark-results/person-int-summary-stats/";
 
     public static void main(String[] args) throws RunnerException
     {
         new JavaInformation().printJavaInformation();
-        Options options = new OptionsBuilder().include(".*" + PersonIntSummaryStats.class.getSimpleName() + ".*")
-                .forks(2)
-                .resultFormat(ResultFormatType.JSON)
-                .result("benchmark-results/person-int-summary-stats/" + args[0] + ".json")
-                .warmupIterations(20)
-                .measurementIterations(10)
-                .mode(Mode.Throughput)
-                .timeUnit(TimeUnit.SECONDS)
+        Options options = new OptionsBuilder().parent(PARENT_OPTIONS)
+                .include(BENCHMARK_INCLUSION_REGEXP)
+                .result(BENCHMARK_RESULTS_DIRECTORY + args[0] + ".csv")
                 .build();
         new Runner(options).run();
     }

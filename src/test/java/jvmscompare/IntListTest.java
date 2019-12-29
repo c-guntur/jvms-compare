@@ -22,6 +22,8 @@ import java.util.stream.Collectors;
  */
 public class IntListTest
 {
+    private static final int SIZE = 1_000_000;
+
     private List<Integer> jdkList;
     private IntList ecIntList;
     private MutableList<Integer> ecList;
@@ -36,10 +38,10 @@ public class IntListTest
                 new Random(1L)
                         .ints(-1000, 1000)
                         .iterator();
-        this.ecList = FastList.newWithNValues(1_000_000, iterator::nextInt);
-        this.jdkList = new ArrayList<>(1_000_000);
+        this.ecList = FastList.newWithNValues(SIZE, iterator::nextInt);
+        this.jdkList = new ArrayList<>(SIZE);
         this.jdkList.addAll(this.ecList);
-        this.ecIntList = this.ecList.collectInt(i -> i, new IntArrayList(1_000_000));
+        this.ecIntList = this.ecList.collectInt(i -> i, new IntArrayList(SIZE));
         this.initializeExpectedSum();
     }
 

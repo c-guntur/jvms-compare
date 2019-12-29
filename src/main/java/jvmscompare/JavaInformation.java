@@ -16,5 +16,10 @@ public class JavaInformation {
         System.out.println();
         System.out.println("Java Class Version: "+ System.getProperty("java.class.version"));
         System.out.println();
+        System.out.println("Benchmark size: "+ Environment.SIZE);
+        System.out.println("Benchmark forks: "+ Environment.FORKS);
+        System.out.println("Benchmark warmups: "+ Environment.WARMUP_ITERATIONS);
+        System.out.println("Benchmark measurements: "+ Environment.MEASUREMENT_ITERATIONS);
+        System.out.println();
     }
 }

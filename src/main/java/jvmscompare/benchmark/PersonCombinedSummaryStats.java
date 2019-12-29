@@ -22,25 +22,22 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import static jvmscompare.Environment.PARENT_OPTIONS;
+
 @State(Scope.Thread)
 @BenchmarkMode(Mode.Throughput)
 @OutputTimeUnit(TimeUnit.SECONDS)
-@Fork(2)
 public class PersonCombinedSummaryStats
 {
-    private static final ExecutorService EXECUTOR_SERVICE = Executors.newWorkStealingPool();
+    private static final String BENCHMARK_INCLUSION_REGEXP = ".*" + PersonCombinedSummaryStats.class.getSimpleName() + ".*";
+    private static final String BENCHMARK_RESULTS_DIRECTORY = "benchmark-results/person-combined-summary-stats/";
 
     public static void main(String[] args) throws RunnerException
     {
         new JavaInformation().printJavaInformation();
-        Options options = new OptionsBuilder().include(".*" + PersonCombinedSummaryStats.class.getSimpleName() + ".*")
-                .forks(2)
-                .resultFormat(ResultFormatType.JSON)
-                .result("benchmark-results/person-combined-summary-stats/" + args[0] + ".json")
-                .warmupIterations(20)
-                .measurementIterations(10)
-                .mode(Mode.Throughput)
-                .timeUnit(TimeUnit.SECONDS)
+        Options options = new OptionsBuilder().parent(PARENT_OPTIONS)
+                .include(BENCHMARK_INCLUSION_REGEXP)
+                .result(BENCHMARK_RESULTS_DIRECTORY + args[0] + ".csv")
                 .build();
         new Runner(options).run();
     }

@@ -30,12 +30,17 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import static jvmscompare.Environment.PARENT_OPTIONS;
+import static jvmscompare.Environment.SIZE;
+
 @State(Scope.Thread)
 @BenchmarkMode(Mode.Throughput)
 @OutputTimeUnit(TimeUnit.SECONDS)
-@Fork(2)
 public class IntListTransform
 {
+    private static final String BENCHMARK_INCLUSION_REGEXP = ".*" + IntListTransform.class.getSimpleName() + ".*";
+    private static final String BENCHMARK_RESULTS_DIRECTORY = "benchmark-results/int-list-transform/";
+
     private List<Integer> jdkList;
     private IntList ecIntList;
     private MutableList<Integer> ecList;
@@ -46,23 +51,18 @@ public class IntListTransform
     {
         this.executor = Executors.newWorkStealingPool();
         PrimitiveIterator.OfInt iterator = new Random(1L).ints(-1000, 1000).iterator();
-        this.ecList = FastList.newWithNValues(1_000_000, iterator::nextInt);
-        this.jdkList = new ArrayList<>(1_000_000);
+        this.ecList = FastList.newWithNValues(SIZE, iterator::nextInt);
+        this.jdkList = new ArrayList<>(SIZE);
         this.jdkList.addAll(this.ecList);
-        this.ecIntList = this.ecList.collectInt(i -> i, new IntArrayList(1_000_000));
+        this.ecIntList = this.ecList.collectInt(i -> i, new IntArrayList(SIZE));
     }
 
     public static void main(String[] args) throws RunnerException
     {
         new JavaInformation().printJavaInformation();
-        Options options = new OptionsBuilder().include(".*" + IntListTransform.class.getSimpleName() + ".*")
-                .forks(2)
-                .resultFormat(ResultFormatType.JSON)
-                .result("benchmark-results/int-list-transform/" + args[0] + ".json")
-                .warmupIterations(20)
-                .measurementIterations(10)
-                .mode(Mode.Throughput)
-                .timeUnit(TimeUnit.SECONDS)
+        Options options = new OptionsBuilder().parent(PARENT_OPTIONS)
+                .include(BENCHMARK_INCLUSION_REGEXP)
+                .result(BENCHMARK_RESULTS_DIRECTORY + args[0] + ".csv")
                 .build();
         new Runner(options).run();
     }
@@ -95,5 +95,13 @@ public class IntListTransform
     public MutableList<Integer> transformECParallel()
     {
         return this.ecList.asParallel(this.executor, 100_000).collect(i -> i * 2).toList();
+    }
+
+    @Benchmark
+    public IntList transformECPrimitiveParallelStream()
+    {
+        return IntLists.mutable.withAll(
+                this.ecIntList.primitiveParallelStream()
+                        .map(i -> i * 2));
     }
 }
