@@ -36,7 +36,7 @@ are not yet endorsed. TODO: create a script to test JDKs.
 
 Meanwhile, run a `java -version` by navigating to the HOME directory of each JDK from a terminal. 
 If any JDK throws a security constraint, the quick work-around is to remove the quarantine attribute:
-For instance for GraalVM CE 19.3.0.2:
+For instance for GraalVM EE 19.3.0.2:
 
 `xattr -d com.apple.quarantine /Library/Java/JavaVirtualMachines/graalvm-ee-java11-19.3.0.2/`
 
