@@ -1,10 +1,22 @@
 #!/bin/bash
 
-./env.sh
+source env.sh
 
 echo "Beginning GraalVM EE benchmarks ..."
+
+export GRAALVM_HOME=/Users/cguntur/Tools/jdks/graalvm-ee-java11-19.3.0.2/Contents/Home/
+export GRAAL_HOME=/Users/cguntur/Tools/jdks/graalvm-ee-java11-19.3.0.2/Contents/Home/
 export JAVA_HOME=${GRAALVM_EE_19_HOME}
+export PATH=$JAVA_HOME/bin:$PATH
+
+echo "JAVA_HOME=${JAVA_HOME}"
+echo "Java Version"
+echo "------------"
+echo `java -version`
+echo "------------"
+
 export MAVEN_OPTS=
+
 #IntList
 echo "  1. IntListFilter benchmarks :: less output/02_GraalEEIntListFilter.txt"
 mvn -P GraalEE,IntList clean test exec:exec -t toolchains.xml > output/02_GraalEEIntListFilter.txt 2>&1

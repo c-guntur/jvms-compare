@@ -1,9 +1,18 @@
 #!/bin/bash
 
-./env.sh
+source env.sh
 
 echo "Beginning OpenJDK (with JVMCI Compiler) benchmarks ..."
 export JAVA_HOME=${OPENJDK_11_HOME}
+export PATH=$JAVA_HOME/bin:$PATH
+export MAVEN_OPTS=
+
+echo "JAVA_HOME=${JAVA_HOME}"
+echo "Java Version"
+echo "------------"
+echo `java -version`
+echo "------------"
+
 export MAVEN_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler"
 #IntList
 echo "  1. IntListFilter benchmarks :: less output/07_OpenJDKGraalIntListFilter.txt"

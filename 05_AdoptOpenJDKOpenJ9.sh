@@ -1,9 +1,18 @@
 #!/bin/bash
 
-./env.sh
+source env.sh
 
 echo "Beginning Adopt OpenJDK with OpenJ9 benchmarks ..."
 export JAVA_HOME=${ADOPT_OPENJ9_11_HOME}
+export PATH=$JAVA_HOME/bin:$PATH
+export MAVEN_OPTS=
+
+echo "JAVA_HOME=${JAVA_HOME}"
+echo "Java Version"
+echo "------------"
+echo `java -version`
+echo "------------"
+
 export MAVEN_OPTS=
 #IntList
 echo "  1. IntListFilter benchmarks :: less output/05_AdoptOpenJDKOpenJ9IntListFilter.txt"

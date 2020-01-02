@@ -1,10 +1,21 @@
 #!/bin/bash
 
-./env.sh
+source env.sh
 
 echo "Beginning GraalVM EE (without JVMCI Compiler) benchmarks ..."
 export JAVA_HOME=${GRAALVM_EE_19_HOME}
-export MAVEN_OPTS="-XX:+UnlockExperimentalVMOptions -XX:-UseJVMCICompiler"
+export GRAALVM_HOME=${GRAALVM_CE_19_HOME}
+export GRAAL_HOME=${GRAALVM_CE_19_HOME}
+export PATH=$JAVA_HOME/bin:$PATH
+
+export MAVEN_OPTS="-XX:-UseJVMCICompiler -XX:-EnableJVMCIProduct"
+
+echo "JAVA_HOME=${JAVA_HOME}"
+echo "Java Version"
+echo "------------"
+echo `java -version`
+echo "------------"
+
 #IntList
 echo "  1. IntListFilter benchmarks :: less output/08_GraalEEHotspotIntListFilter.txt"
 mvn -P GraalEEHotspot clean test exec:exec -t toolchains.xml > output/08_GraalEEHotspotIntListFilter.txt 2>&1

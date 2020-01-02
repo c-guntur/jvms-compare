@@ -1,9 +1,18 @@
 #!/bin/bash
 
-./env.sh
+source env.sh
 
 echo "Beginning Oracle JDK benchmarks ..."
 export JAVA_HOME=${ORACLE_JDK_11_HOME}
+export PATH=$JAVA_HOME/bin:$PATH
+export MAVEN_OPTS=
+
+echo "JAVA_HOME=${JAVA_HOME}"
+echo "Java Version"
+echo "------------"
+echo `java -version`
+echo "------------"
+
 export MAVEN_OPTS=
 #IntList
 echo "  1. IntListFilter benchmarks :: less output/01_OracleJDKIntListFilter.txt"

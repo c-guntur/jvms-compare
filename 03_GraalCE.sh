@@ -1,10 +1,21 @@
 #!/bin/bash
 
-./env.sh
+source env.sh
 
 echo "Beginning GraalVM CE benchmarks ..."
+export GRAALVM_HOME=${GRAALVM_CE_19_HOME}
+export GRAAL_HOME=${GRAALVM_CE_19_HOME}
 export JAVA_HOME=${GRAALVM_CE_19_HOME}
+export PATH=$JAVA_HOME/bin:$PATH
 export MAVEN_OPTS=
+
+echo "JAVA_HOME=${JAVA_HOME}"
+echo "Java Version"
+echo "------------"
+echo `java -version`
+echo "------------"
+
+
 #IntList
 echo "  1. IntListFilter benchmarks :: less output/03_GraalCEIntListFilter.txt"
 mvn -P GraalCE,IntList clean test exec:exec -t toolchains.xml > output/03_GraalCEIntListFilter.txt 2>&1
@@ -21,7 +32,7 @@ echo "  6. PersonIntSummaryStatistics benchmarks :: less output/03_GraalCEPerson
 mvn -P GraalCE,Person clean test exec:exec@intSummaryStats -t toolchains.xml > output/03_GraalCEPersonIntSummaryStats.txt 2>&1
 echo "  7. PersonCombinedSummaryStatistics benchmarks :: less output/03_GraalCEPersonCombinedSummaryStats.txt"
 mvn -P GraalCE,Person clean test exec:exec@combinedSummaryStats -t toolchains.xml > output/03_GraalCEPersonCombinedSummaryStats.txt 2>&1
-echo "Completed GraalVM EE benchmarks."
+echo "Completed GraalVM CE benchmarks."
 echo "--------------------------------"
 echo
 
