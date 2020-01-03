@@ -68,39 +68,39 @@ public class IntListSum
     }
 
     @Benchmark
-    public long sumJDK()
+    public long sum_JDK_Stream_Serial()
     {
         return this.jdkList.stream().mapToLong(i -> i).sum();
     }
 
     @Benchmark
-    public long sumJDKParallel()
-    {
-        return this.jdkList.parallelStream().mapToLong(i -> i).sum();
-    }
-
-    @Benchmark
-    public long sumECPrimitive()
-    {
-        return this.ecIntList.sum();
-    }
-
-    @Benchmark
-    public long sumEC()
+    public long sum_EC_Eager_Serial()
     {
         return this.ecList.sumOfInt(i -> i);
     }
 
     @Benchmark
-    public long sumECParallel()
+    public long sum_EC_Primitive_Eager_Serial()
     {
-        return this.ecList.asParallel(this.executor, 100_000).sumOfInt(i -> i);
+        return this.ecIntList.sum();
     }
 
     @Benchmark
-    public long sumECPrimitiveParallelStream()
+    public long sum_JDK_Stream_Parallel()
+    {
+        return this.jdkList.parallelStream().mapToLong(i -> i).sum();
+    }
+
+    @Benchmark
+    public long sum_EC_Primitive_Stream_Parallel()
     {
         return this.ecIntList.primitiveParallelStream().asLongStream().sum();
+    }
+
+    @Benchmark
+    public long sum_EC_Eager_Parallel()
+    {
+        return this.ecList.asParallel(this.executor, 100_000).sumOfInt(i -> i);
     }
 
 }

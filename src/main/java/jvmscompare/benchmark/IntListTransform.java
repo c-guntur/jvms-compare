@@ -68,40 +68,41 @@ public class IntListTransform
     }
 
     @Benchmark
-    public List<Integer> transformJDKBoxed()
+    public List<Integer> transform_JDK_Boxed_Stream_Serial()
     {
         return this.jdkList.stream().mapToInt(i -> i * 2).boxed().collect(Collectors.toList());
     }
 
     @Benchmark
-    public List<Integer> transformJDKBoxedParallel()
-    {
-        return this.jdkList.parallelStream().mapToInt(i -> i * 2).boxed().collect(Collectors.toList());
-    }
-
-    @Benchmark
-    public IntList transformECPrimitive()
-    {
-        return this.ecIntList.collectInt(i -> i * 2, IntLists.mutable.empty());
-    }
-
-    @Benchmark
-    public MutableList<Integer> transformEC()
+    public MutableList<Integer> transform_EC_Eager_Serial()
     {
         return this.ecList.collect(i -> i * 2).toList();
     }
 
     @Benchmark
-    public MutableList<Integer> transformECParallel()
+    public IntList transform_EC_Primitive_Eager_Serial()
     {
-        return this.ecList.asParallel(this.executor, 100_000).collect(i -> i * 2).toList();
+        return this.ecIntList.collectInt(i -> i * 2, IntLists.mutable.empty());
     }
 
     @Benchmark
-    public IntList transformECPrimitiveParallelStream()
+    public List<Integer> transform_JDK_Boxed_Stream_Parallel()
+    {
+        return this.jdkList.parallelStream().mapToInt(i -> i * 2).boxed().collect(Collectors.toList());
+    }
+
+    @Benchmark
+    public IntList transform_EC_Primitive_Stream_Parallel()
     {
         return IntLists.mutable.withAll(
                 this.ecIntList.primitiveParallelStream()
                         .map(i -> i * 2));
     }
+
+    @Benchmark
+    public MutableList<Integer> transform_EC_Eager_Parallel()
+    {
+        return this.ecList.asParallel(this.executor, 100_000).collect(i -> i * 2).toList();
+    }
+
 }

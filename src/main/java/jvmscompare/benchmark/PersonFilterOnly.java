@@ -50,47 +50,7 @@ public class PersonFilterOnly
     }
 
     @Benchmark
-    public List<Person> filterJDK_parallel()
-    {
-        List<Person> filtered =
-                Person.getJDKPeople().parallelStream()
-                        .filter(person -> person.getHeightInInches() < 150)
-                        .filter(person -> person.getHeightInInches() > 80)
-                        .collect(Collectors.toList());
-        return filtered;
-    }
-
-    @Benchmark
-    public List<Person> filterECLazy_parallel()
-    {
-        List<Person> filtered =
-                Person.getECPeople().asParallel(EXECUTOR_SERVICE, 100_000)
-                        .select(person -> person.getHeightInInches() < 150)
-                        .select(person -> person.getHeightInInches() > 80)
-                        .toList();
-        return filtered;
-    }
-
-    @Benchmark
-    public Collection<Person> filterECEager_parallel()
-    {
-        Collection<Person> select =
-                ParallelIterate.select(Person.getECPeople(), person -> person.getHeightInInches() < 150);
-        return ParallelIterate.select(select, person -> person.getHeightInInches() > 80);
-    }
-
-    @Benchmark
-    public List<Person> filterECStream_parallel()
-    {
-        List<Person> filtered =
-                Person.getJDKPeople().parallelStream()
-                        .filter(person -> person.getHeightInInches() < 150)
-                        .collect(Collectors2.select(person -> person.getHeightInInches() > 80, Lists.mutable::empty));
-        return filtered;
-    }
-
-    @Benchmark
-    public Map<Integer, List<Person>> filterJDK_serial()
+    public Map<Integer, List<Person>> filter_JDK_Stream_Serial()
     {
         Map<Integer, List<Person>> grouped =
                 Person.getJDKPeople().stream()
@@ -101,16 +61,7 @@ public class PersonFilterOnly
     }
 
     @Benchmark
-    public List<Person> filterECEager_serial()
-    {
-        List<Person>  filtered = Person.getECPeople()
-                .select(person -> person.getHeightInInches() < 150)
-                .select(person -> person.getHeightInInches() > 80);
-        return filtered;
-    }
-
-    @Benchmark
-    public List<Person> filterECLazy_serial()
+    public List<Person> filter_EC_Lazy_Serial()
     {
         List<Person>  filtered = Person.getECPeople()
                 .asLazy()
@@ -119,5 +70,56 @@ public class PersonFilterOnly
                 .toList();
         return filtered;
     }
+
+    @Benchmark
+    public List<Person> filter_EC_Eager_Serial()
+    {
+        List<Person>  filtered = Person.getECPeople()
+                .select(person -> person.getHeightInInches() < 150)
+                .select(person -> person.getHeightInInches() > 80);
+        return filtered;
+    }
+
+    @Benchmark
+    public List<Person> filter_JDK_Stream_Parallel()
+    {
+        List<Person> filtered =
+                Person.getJDKPeople().parallelStream()
+                        .filter(person -> person.getHeightInInches() < 150)
+                        .filter(person -> person.getHeightInInches() > 80)
+                        .collect(Collectors.toList());
+        return filtered;
+    }
+
+    @Benchmark
+    public List<Person> filter_EC_Stream_Parallel()
+    {
+        List<Person> filtered =
+                Person.getJDKPeople().parallelStream()
+                        .filter(person -> person.getHeightInInches() < 150)
+                        .collect(Collectors2.select(person -> person.getHeightInInches() > 80, Lists.mutable::empty));
+        return filtered;
+    }
+
+    @Benchmark
+    public List<Person> filter_EC_Lazy_Parallel()
+    {
+        List<Person> filtered =
+                Person.getECPeople().asParallel(EXECUTOR_SERVICE, 100_000)
+                        .select(person -> person.getHeightInInches() < 150)
+                        .select(person -> person.getHeightInInches() > 80)
+                        .toList();
+        return filtered;
+    }
+
+    @Benchmark
+    public Collection<Person> filter_EC_Eager_Parallel()
+    {
+        Collection<Person> select =
+                ParallelIterate.select(Person.getECPeople(), person -> person.getHeightInInches() < 150);
+        return ParallelIterate.select(select, person -> person.getHeightInInches() > 80);
+    }
+
+
 
 }

@@ -52,47 +52,7 @@ public class PersonFilterAndGroup
     }
 
     @Benchmark
-    public Map<Integer, List<Person>> filterAndGroupByAgeJDK_parallel()
-    {
-        Map<Integer, List<Person>> grouped =
-                Person.getJDKPeople().parallelStream()
-                        .filter(person -> person.getHeightInInches() < 150)
-                        .collect(Collectors.groupingBy(Person::getAge));
-        return grouped;
-    }
-
-    @Benchmark
-    public ListMultimap<Integer, Person> filterAndGroupByAgeECLazy_parallel()
-    {
-        ListMultimap<Integer, Person> grouped =
-                Person.getECPeople().asParallel(EXECUTOR_SERVICE, 100_000)
-                        .select(person -> person.getHeightInInches() < 150)
-                        .groupBy(Person::getAge);
-        return grouped;
-    }
-
-    @Benchmark
-    public MutableMultimap<Integer, Person> filterAndGroupByAgeECEager_parallel()
-    {
-        Iterable<Person> select =
-                ParallelIterate.select(Person.getECPeople(), person -> person.getHeightInInches() < 150);
-        MutableMultimap<Integer, Person> grouped =
-                ParallelIterate.groupBy(select, Person::getAge);
-        return grouped;
-    }
-
-    @Benchmark
-    public MutableListMultimap<Integer, Person> filterAndGroupByAgeECStream_parallel()
-    {
-        MutableListMultimap<Integer, Person> grouped =
-                Person.getJDKPeople().parallelStream()
-                        .filter(person -> person.getHeightInInches() < 150)
-                        .collect(Collectors2.toListMultimap(Person::getAge));
-        return grouped;
-    }
-
-    @Benchmark
-    public Map<Integer, List<Person>> filterAndGroupByAgeJDK_serial()
+    public Map<Integer, List<Person>> filterAndGroupByAge_JDK_Stream_Serial()
     {
         Map<Integer, List<Person>> grouped =
                 Person.getJDKPeople().stream()
@@ -102,7 +62,17 @@ public class PersonFilterAndGroup
     }
 
     @Benchmark
-    public MutableListMultimap<Integer, Person> filterAndGroupByAgeECEager_serial()
+    public Multimap<Integer, Person> filterAndGroupByAge_EC_Lazy_Serial()
+    {
+        Multimap<Integer, Person> grouped = Person.getECPeople()
+                .asLazy()
+                .select(person -> person.getHeightInInches() < 150)
+                .groupBy(Person::getAge);
+        return grouped;
+    }
+
+    @Benchmark
+    public MutableListMultimap<Integer, Person> filterAndGroupByAge_EC_Eager_Serial()
     {
         MutableListMultimap<Integer, Person> grouped =
                 Person.getECPeople()
@@ -112,12 +82,42 @@ public class PersonFilterAndGroup
     }
 
     @Benchmark
-    public Multimap<Integer, Person> filterAndGroupByAgeECLazy_serial()
+    public Map<Integer, List<Person>> filterAndGroupByAge_JDK_Stream_Parallel()
     {
-        Multimap<Integer, Person> grouped = Person.getECPeople()
-                .asLazy()
-                .select(person -> person.getHeightInInches() < 150)
-                .groupBy(Person::getAge);
+        Map<Integer, List<Person>> grouped =
+                Person.getJDKPeople().parallelStream()
+                        .filter(person -> person.getHeightInInches() < 150)
+                        .collect(Collectors.groupingBy(Person::getAge));
+        return grouped;
+    }
+
+    @Benchmark
+    public MutableListMultimap<Integer, Person> filterAndGroupByAge_EC_Stream_Parallel()
+    {
+        MutableListMultimap<Integer, Person> grouped =
+                Person.getJDKPeople().parallelStream()
+                        .filter(person -> person.getHeightInInches() < 150)
+                        .collect(Collectors2.toListMultimap(Person::getAge));
+        return grouped;
+    }
+
+    @Benchmark
+    public ListMultimap<Integer, Person> filterAndGroupByAge_EC_Lazy_Parallel()
+    {
+        ListMultimap<Integer, Person> grouped =
+                Person.getECPeople().asParallel(EXECUTOR_SERVICE, 100_000)
+                        .select(person -> person.getHeightInInches() < 150)
+                        .groupBy(Person::getAge);
+        return grouped;
+    }
+
+    @Benchmark
+    public MutableMultimap<Integer, Person> filterAndGroupByAge_EC_Eager_Parallel()
+    {
+        Iterable<Person> select =
+                ParallelIterate.select(Person.getECPeople(), person -> person.getHeightInInches() < 150);
+        MutableMultimap<Integer, Person> grouped =
+                ParallelIterate.groupBy(select, Person::getAge);
         return grouped;
     }
 

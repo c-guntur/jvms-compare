@@ -43,31 +43,7 @@ public class PersonCombinedSummaryStats
     }
 
     @Benchmark
-    public Object[] combinedStatisticsJDK_parallel()
-    {
-        DoubleSummaryStatistics stats1 =
-                Person.getJDKPeople().parallelStream().mapToDouble(Person::getHeightInInches).summaryStatistics();
-        DoubleSummaryStatistics stats2 =
-                Person.getJDKPeople().parallelStream().mapToDouble(Person::getWeightInPounds).summaryStatistics();
-        IntSummaryStatistics stats3 =
-                Person.getJDKPeople().parallelStream().mapToInt(Person::getAge).summaryStatistics();
-        return new Object[]{stats1, stats2, stats3};
-    }
-
-    @Benchmark
-    public Object[] combinedStatisticsECStream_parallel()
-    {
-        DoubleSummaryStatistics stats1 =
-                Person.getECPeople().parallelStream().mapToDouble(Person::getHeightInInches).summaryStatistics();
-        DoubleSummaryStatistics stats2 =
-                Person.getECPeople().parallelStream().mapToDouble(Person::getWeightInPounds).summaryStatistics();
-        IntSummaryStatistics stats3 =
-                Person.getECPeople().parallelStream().mapToInt(Person::getAge).summaryStatistics();
-        return new Object[]{stats1, stats2, stats3};
-    }
-
-    @Benchmark
-    public Object[] combinedStatisticsJDK_serial()
+    public Object[] combinedStatistics_JDK_Stream_Serial()
     {
         DoubleSummaryStatistics stats1 =
                 Person.getJDKPeople().stream().mapToDouble(Person::getHeightInInches).summaryStatistics();
@@ -79,7 +55,7 @@ public class PersonCombinedSummaryStats
     }
 
     @Benchmark
-    public Object[] combinedStatisticsECLazy_serial()
+    public Object[] combinedStatistics_EC_Lazy_Serial()
     {
         DoubleSummaryStatistics stats1 =
                 Person.getECPeople().asLazy().collectDouble(Person::getHeightInInches).summaryStatistics();
@@ -91,7 +67,7 @@ public class PersonCombinedSummaryStats
     }
 
     @Benchmark
-    public Object[] combinedStatisticsECEager_serial()
+    public Object[] combinedStatistics_EC_Eager_Serial()
     {
         DoubleSummaryStatistics stats1 =
                 Person.getECPeople().summarizeDouble(Person::getHeightInInches);
@@ -101,5 +77,30 @@ public class PersonCombinedSummaryStats
                 Person.getECPeople().summarizeInt(Person::getAge);
         return new Object[]{stats1, stats2, stats3};
     }
+
+    @Benchmark
+    public Object[] combinedStatistics_JDK_Stream_Parallel()
+    {
+        DoubleSummaryStatistics stats1 =
+                Person.getJDKPeople().parallelStream().mapToDouble(Person::getHeightInInches).summaryStatistics();
+        DoubleSummaryStatistics stats2 =
+                Person.getJDKPeople().parallelStream().mapToDouble(Person::getWeightInPounds).summaryStatistics();
+        IntSummaryStatistics stats3 =
+                Person.getJDKPeople().parallelStream().mapToInt(Person::getAge).summaryStatistics();
+        return new Object[]{stats1, stats2, stats3};
+    }
+
+    @Benchmark
+    public Object[] combinedStatistics_EC_Stream_Parallel()
+    {
+        DoubleSummaryStatistics stats1 =
+                Person.getECPeople().parallelStream().mapToDouble(Person::getHeightInInches).summaryStatistics();
+        DoubleSummaryStatistics stats2 =
+                Person.getECPeople().parallelStream().mapToDouble(Person::getWeightInPounds).summaryStatistics();
+        IntSummaryStatistics stats3 =
+                Person.getECPeople().parallelStream().mapToInt(Person::getAge).summaryStatistics();
+        return new Object[]{stats1, stats2, stats3};
+    }
+
 
 }

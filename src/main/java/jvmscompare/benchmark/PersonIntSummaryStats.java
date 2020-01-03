@@ -46,27 +46,8 @@ public class PersonIntSummaryStats
         new Runner(options).run();
     }
 
-
     @Benchmark
-    public IntSummaryStatistics intSummaryStatisticsECEager_serial()
-    {
-        IntSet uniqueAges =
-                Person.getECPeople().collectInt(Person::getAge, IntSets.mutable.empty());
-        IntSummaryStatistics summary = uniqueAges.summaryStatistics();
-        return summary;
-    }
-
-    @Benchmark
-    public IntSummaryStatistics intSummaryStatisticsECLazy_serial()
-    {
-        IntSet uniqueAges =
-                Person.getECPeople().asLazy().collectInt(Person::getAge).toSet();
-        IntSummaryStatistics summary = uniqueAges.summaryStatistics();
-        return summary;
-    }
-
-    @Benchmark
-    public IntSummaryStatistics intSummaryStatisticsJDK_serial()
+    public IntSummaryStatistics intSummaryStatistics_JDK_Stream_Serial()
     {
         Set<Integer> uniqueAges =
                 Person.getJDKPeople().stream()
@@ -78,18 +59,25 @@ public class PersonIntSummaryStats
     }
 
     @Benchmark
-    public IntSummaryStatistics intSummaryStatisticsECStream_parallel()
+    public IntSummaryStatistics intSummaryStatistics_EC_Lazy_Serial()
     {
         IntSet uniqueAges =
-                Person.getECPeople()
-                        .parallelStream()
-                        .collect(Collectors2.collectInt(Person::getAge, IntSets.mutable::empty));
+                Person.getECPeople().asLazy().collectInt(Person::getAge).toSet();
         IntSummaryStatistics summary = uniqueAges.summaryStatistics();
         return summary;
     }
 
     @Benchmark
-    public IntSummaryStatistics intSummaryStatisticsJDK_parallel()
+    public IntSummaryStatistics intSummaryStatistics_EC_Eager_Serial()
+    {
+        IntSet uniqueAges =
+                Person.getECPeople().collectInt(Person::getAge, IntSets.mutable.empty());
+        IntSummaryStatistics summary = uniqueAges.summaryStatistics();
+        return summary;
+    }
+
+    @Benchmark
+    public IntSummaryStatistics intSummaryStatistics_JDK_Stream_Parallel()
     {
         Set<Integer> uniqueAges =
                 Person.getJDKPeople().parallelStream()
@@ -97,6 +85,17 @@ public class PersonIntSummaryStats
                         .boxed()
                         .collect(Collectors.toSet());
         IntSummaryStatistics summary = uniqueAges.parallelStream().mapToInt(i -> i).summaryStatistics();
+        return summary;
+    }
+
+    @Benchmark
+    public IntSummaryStatistics intSummaryStatistics_EC_Stream_Parallel()
+    {
+        IntSet uniqueAges =
+                Person.getECPeople()
+                        .parallelStream()
+                        .collect(Collectors2.collectInt(Person::getAge, IntSets.mutable::empty));
+        IntSummaryStatistics summary = uniqueAges.summaryStatistics();
         return summary;
     }
 }

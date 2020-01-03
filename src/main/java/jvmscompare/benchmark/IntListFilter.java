@@ -65,41 +65,41 @@ public class IntListFilter
     }
 
     @Benchmark
-    public List<Integer> filterJDKBoxed()
+    public List<Integer> filter_JDK_Boxed_Stream_Serial()
     {
         return this.jdkList.stream().filter(i -> i % 2 == 0).collect(Collectors.toList());
     }
 
     @Benchmark
-    public List<Integer> filterJDKBoxedParallel()
-    {
-        return this.jdkList.parallelStream().filter(i -> i % 2 == 0).collect(Collectors.toList());
-    }
-
-    @Benchmark
-    public IntList filterECPrimitive()
-    {
-        return this.ecIntList.select(i -> i % 2 == 0);
-    }
-
-    @Benchmark
-    public MutableList<Integer> filterEC()
+    public MutableList<Integer> filter_EC_Eager_Serial()
     {
         return this.ecList.select(i -> i % 2 == 0);
     }
 
     @Benchmark
-    public MutableList<Integer> filterECParallel()
+    public IntList filter_EC_Primitive_Eager_Serial()
     {
-        return this.ecList.asParallel(this.executor, 100_000).select(i -> i % 2 == 0).toList();
+        return this.ecIntList.select(i -> i % 2 == 0);
     }
 
     @Benchmark
-    public IntList filterECPrimitiveParallelStream()
+    public List<Integer> filter_JDK_Boxed_Stream_Parallel()
+    {
+        return this.jdkList.parallelStream().filter(i -> i % 2 == 0).collect(Collectors.toList());
+    }
+
+    @Benchmark
+    public IntList filter_EC_Primitive_Stream_Parallel()
     {
         return IntLists.mutable.withAll(
                 this.ecIntList.primitiveParallelStream()
                         .filter(i -> i % 2 == 0));
+    }
+
+    @Benchmark
+    public MutableList<Integer> filter_EC_Eager_Parallel()
+    {
+        return this.ecList.asParallel(this.executor, 100_000).select(i -> i % 2 == 0).toList();
     }
 
 }
