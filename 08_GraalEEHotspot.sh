@@ -8,7 +8,7 @@ export GRAALVM_HOME=${GRAALVM_CE_19_HOME}
 export GRAAL_HOME=${GRAALVM_CE_19_HOME}
 export PATH=$JAVA_HOME/bin:$PATH
 
-export MAVEN_OPTS="-XX:-UseJVMCICompiler -XX:-EnableJVMCIProduct"
+export MAVEN_OPTS="-XX:-UseJVMCICompiler"
 
 echo "JAVA_HOME=${JAVA_HOME}"
 echo "Java Version"
