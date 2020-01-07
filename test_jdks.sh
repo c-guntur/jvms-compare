@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./env.sh
+source env.sh
 
 echo "------------------------------------------ Testing Oracle JDK 11 ------------------------------------------"
 ${ORACLE_JDK_11_HOME}bin/java -version
