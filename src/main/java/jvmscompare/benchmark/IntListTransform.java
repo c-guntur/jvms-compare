@@ -74,7 +74,7 @@ public class IntListTransform
     }
 
     @Benchmark
-    public MutableList<Integer> transform_EC_Eager_Serial()
+    public MutableList<Integer> transform_EC_Boxed_Eager_Serial()
     {
         return this.ecList.collect(i -> i * 2).toList();
     }
@@ -100,7 +100,7 @@ public class IntListTransform
     }
 
     @Benchmark
-    public MutableList<Integer> transform_EC_Eager_Parallel()
+    public MutableList<Integer> transform_EC_Boxed_Lazy_Parallel()
     {
         return this.ecList.asParallel(this.executor, 100_000).collect(i -> i * 2).toList();
     }

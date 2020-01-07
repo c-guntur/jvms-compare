@@ -68,13 +68,13 @@ public class IntListSum
     }
 
     @Benchmark
-    public long sum_JDK_Stream_Serial()
+    public long sum_JDK_Boxed_Stream_Serial()
     {
         return this.jdkList.stream().mapToLong(i -> i).sum();
     }
 
     @Benchmark
-    public long sum_EC_Eager_Serial()
+    public long sum_EC_Boxed_Eager_Serial()
     {
         return this.ecList.sumOfInt(i -> i);
     }
@@ -86,7 +86,7 @@ public class IntListSum
     }
 
     @Benchmark
-    public long sum_JDK_Stream_Parallel()
+    public long sum_JDK_Boxed_Stream_Parallel()
     {
         return this.jdkList.parallelStream().mapToLong(i -> i).sum();
     }
@@ -98,7 +98,7 @@ public class IntListSum
     }
 
     @Benchmark
-    public long sum_EC_Eager_Parallel()
+    public long sum_EC_Boxed_Lazy_Parallel()
     {
         return this.ecList.asParallel(this.executor, 100_000).sumOfInt(i -> i);
     }

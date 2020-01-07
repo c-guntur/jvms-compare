@@ -71,7 +71,7 @@ public class IntListFilter
     }
 
     @Benchmark
-    public MutableList<Integer> filter_EC_Eager_Serial()
+    public MutableList<Integer> filter_EC_Boxed_Eager_Serial()
     {
         return this.ecList.select(i -> i % 2 == 0);
     }
@@ -97,7 +97,7 @@ public class IntListFilter
     }
 
     @Benchmark
-    public MutableList<Integer> filter_EC_Eager_Parallel()
+    public MutableList<Integer> filter_EC_Boxed_Lazy_Parallel()
     {
         return this.ecList.asParallel(this.executor, 100_000).select(i -> i % 2 == 0).toList();
     }
