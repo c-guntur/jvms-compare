@@ -7,7 +7,7 @@ The unit tests rely on [**Eclipse Collections**](https://eclipse.org/collections
 use JMH for benchmarks.
 
 Various profiles are intended to execute the same benchmarks on different JVMs, such as 
-GraalVM CE, GraalVM EE, OpenJDK 11, Oracle JDK 8.
+GraalVM CE, GraalVM EE, OpenJDK 11, Oracle JDK 11.
 
 ## What is currently tested?
 
@@ -32,7 +32,7 @@ Sequence | JDK | Version |  Notes
 
 #### NOTE: OS X Catalina Security - trusted executables.
 It is important to test each downloaded JDK before running the benchmarks, since some of the distrubutors 
-are not yet endorsed. TODO: create a script to test JDKs.
+are not yet endorsed. Run the test_jdks.sh.
 
 Meanwhile, run a `java -version` by navigating to the HOME directory of each JDK from a terminal. 
 If any JDK throws a security constraint, the quick work-around is to remove the quarantine attribute:
@@ -44,20 +44,9 @@ For instance for GraalVM EE 19.3.0.2:
 
 1. Setup an IDE if you wish to include more Benchmarks or edit configurations.
 1. Setup the JDKs that are being tested.
-1. Setup Apache Maven (v3.6.1 or above).
+1. Setup Apache Maven (v3.6.2 or above).
 1. Setup the environment variables (at a minimum, GRAALVM_EE_HOME and ORACLE_JAVA8_HOME).
 
-
-### Samples:
-
-  #### Setting GRAALVM_CE_HOME
-    `export GRAALVM_CE_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-19.2.0/Contents/Home/`
-
-#### Setting GRAALVM_EE_HOME
-    `export GRAALVM_EE_HOME=/Library/Java/JavaVirtualMachines/graalvm-ee-19.2.0/Contents/Home/`
-
-#### Setting ORACLE_JAVA8_HOME
-    `export ORACLE_JAVA8_HOME=/Library/Java/JavaVirtualMachines/oraclejdk1.8.0_212.jdk/Contents/Home/`
 
 ## Usage
 
@@ -69,44 +58,9 @@ can be created by:
 1. modifying the toolchain configuration in **maven-toolchains-plugin** to pick the right toolchain.
 1. {optionally} updating the **exec-maven-plugin** to run the appropriate Benchmark class.
 
-### Default maven invocation
-The maven command to mvn -P **<profile name>**  clean test exec:exec -t toolchains.xml
-
-#### Run Oracle Java 8 with Primitive IntList Filter Benchmarks
-    export MAVEN_OPTS=
-    mvn -P OracleJDK8,IntList clean test exec:exec -t toolchains.xml 
-
-#### Run Oracle Java 8 with Primitive IntList Sum Benchmarks (see IntList profile in [pom.xml](pom.xml))
-    export MAVEN_OPTS=
-    mvn -P OracleJDK8,IntList clean test exec:exec@sum -t toolchains.xml 
-
-#### Run Oracle Java 8 with Person IntSummaryStatistics Benchmarks
-    export MAVEN_OPTS=
-    mvn -P OracleJDK8,Person clean test exec:exec@intSummaryStats -t toolchains.xml
-
-#### Run Graal VM EE with Primitive IntList Filter Benchmarks
-    export MAVEN_OPTS=
-    mvn -P GraalEE,IntList clean test exec:exec -t toolchains.xml 
-
-#### Run Graal VM EE with Primitive IntList Sum Benchmarks (see IntList profile in [pom.xml](pom.xml))
-    export MAVEN_OPTS=
-    mvn -P GraalEE,IntList clean test exec:exec@sum -t toolchains.xml 
-
-#### Run Graal VM EE with Person IntSummaryStatistics Benchmarks
-    export MAVEN_OPTS=
-    mvn -P GraalEE,Person clean test exec:exec@intSummaryStats -t toolchains.xml
-
-#### Run Graal VM EE using C2 Compiler with Primitive IntList Filter Benchmarks
-    export MAVEN_OPTS=
-    mvn -P GraalEEHotspot clean test exec:exec -t toolchains.xml 
-
-#### Run Graal VM EE using C2 Compiler with Person IntSummary Statistics Benchmarks
-    export MAVEN_OPTS="-XX:+UnlockExperimentalVMOptions -XX:-UseJVMCICompiler"
-    mvn -P GraalEEHotspot clean test exec:exec@intSummaryStats -t toolchains.xml 
-
 ## Notes on toolchains
 
-As of Apache Maven 3.6.1, there is a bug that prevents using an environment variable in the 
+Until Apache Maven 3.6.2, there was a bug that prevents using an environment variable in the 
 `toolchains.xml`. This means that toolchains.xml will be different on different machines. 
 
 Update the `toolchains.xml` locally and point to:
