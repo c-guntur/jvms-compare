@@ -13,7 +13,7 @@ http://maven.apache.org/TOOLCHAINS/1.1.0 ">
         </provides>
         <configuration>
 <!--            <jdkHome>${env.ORACLE_JDK_11_HOME}</jdkHome>-->
-            <jdkHome>/Library/Java/JavaVirtualMachines/oraclejdk-11.0.5.jdk/Contents/Home/</jdkHome>
+            <jdkHome>/Library/Java/JavaVirtualMachines/oraclejdk-11.0.6.jdk/Contents/Home/</jdkHome>
         </configuration>
     </toolchain>
 
@@ -25,7 +25,7 @@ http://maven.apache.org/TOOLCHAINS/1.1.0 ">
         </provides>
         <configuration>
 <!--             <jdkHome>${env.GRAALVM_EE_19_HOME}</jdkHome>-->
-             <jdkHome>/Library/Java/JavaVirtualMachines/graalvm-ee-java11-19.3.0.2/</jdkHome>
+             <jdkHome>/Library/Java/JavaVirtualMachines/graalvm-ee-java11-19.3.1/</jdkHome>
         </configuration>
     </toolchain>
 
@@ -37,7 +37,7 @@ http://maven.apache.org/TOOLCHAINS/1.1.0 ">
         </provides>
         <configuration>
 <!--             <jdkHome>${env.GRAALVM_CE_19_HOME}</jdkHome>-->
-             <jdkHome>/Library/Java/JavaVirtualMachines/graalvm-ce-java11-19.3.0.2/Contents/Home/</jdkHome>
+             <jdkHome>/Library/Java/JavaVirtualMachines/graalvm-ce-java11-19.3.1/Contents/Home/</jdkHome>
         </configuration>
     </toolchain>
 
