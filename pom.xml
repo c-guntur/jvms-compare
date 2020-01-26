@@ -24,12 +24,12 @@
         <maven.compiler.target>11</maven.compiler.target>
 
         <eclipse-collections.version>10.0.0</eclipse-collections.version>
-        <jmh.version>1.21</jmh.version>
+        <jmh.version>1.23</jmh.version>
         <junit.version>5.5.0</junit.version>
         <benchmark.forks>2</benchmark.forks>
-        <benchmark.size>100</benchmark.size>
-        <benchmark.warmups>2</benchmark.warmups>
-        <benchmark.measurements>5</benchmark.measurements>
+        <benchmark.size>1000000</benchmark.size>
+        <benchmark.warmups>20</benchmark.warmups>
+        <benchmark.measurements>10</benchmark.measurements>
     </properties>
 
     <build>
@@ -855,6 +855,37 @@
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.PersonCombinedSummaryStats</argument>
                                         <argument>${execution.name}PersonCombinedSummaryStats</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+
+        <!-- tester profile -->
+        <profile>
+            <id>JavaInformation</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.6.0</version>
+                        <executions>
+                            <execution>
+                                <id>default-cli</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>jvmscompare.JavaInformation</argument>
                                     </arguments>
                                 </configuration>
                             </execution>

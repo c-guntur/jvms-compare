@@ -16,8 +16,8 @@ Sequence | JDK | Version |  Notes
 01 | Oracle JDK 11 | 11.0.5 | 
 02 | Graal VM EE | 19.3.0.2 | 
 03 | Graal VM CE | 19.3.0.2 | 
-04 | AdoptOpenJDK 11 w/Hotspot | 11.0.5 +10 | 
-05 | AdoptOpenJDK 11 w/OpenJ9 | 11.0.5 +10 | OpenJ9 build openj9-0.17.0
+04 | AdoptOpenJDK 11 w/Hotspot | 11.0.6 +10 | 
+05 | AdoptOpenJDK 11 w/OpenJ9 | 11.0.6 +10 | OpenJ9 build openj9-0.18.1
 06 | OpenJDK 11 | 11.0.2 | 
 07 | OpenJDK 11 w/Graal | 11.0.2 | Experimental Option +UseJVMCICompiler
 08 | GraalEE w/C2 | 19.3.0.2 | Experimental Option -UseJVMCICompiler
@@ -108,10 +108,8 @@ From the root folder, run:
 
 
 ### Experimenting with Results
-If you wish to experiment with the results of the benchmarks we have already run you can look at the folders:
-`results_for_1k_size` and `results_for_1M_size`.
 Notes about the results:
 * The results for each benchmark run is saved in it's own respective folder.
-* The results are saved as json files as well as maven build output.
-* For json files navigate to benchmark-results (For Eg. /results_for_1k_size/benchmark-results/int-lists-filter)
-* For maven build output navigate to output (For Eg. /results_for_1k_size/output/)
+* The benchmark results in csv as well as maven build output are saved.
+* For csv files navigate to benchmark-results (For Eg. benchmark-results/int-lists-filter/)
+* For maven build output navigate to output (For Eg. output/)

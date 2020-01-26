@@ -13,4 +13,4 @@ buildNumber.properties
 /.idea/
 /*.iml
 /output/*.txt
-/benchmark-results/**/*.json
+/benchmark-results/**/*.csv
