@@ -1,6 +1,5 @@
 package jvmscompare;
 
-import jvmscompare.Person;
 import org.junit.Assert;
 import org.junit.Test;
 

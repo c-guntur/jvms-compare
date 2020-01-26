@@ -13,8 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class Environment {
 
     static final String BENCHMARK_SIZE = "benchmark.size";
-//    static final String DEFAULT_SIZE = "1_000_000";
-    static final String DEFAULT_SIZE = "100";
+    static final String DEFAULT_SIZE = "1_000_000";
     public static int SIZE;
 
 

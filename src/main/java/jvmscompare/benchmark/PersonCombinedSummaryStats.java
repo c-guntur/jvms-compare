@@ -4,22 +4,17 @@ import jvmscompare.JavaInformation;
 import jvmscompare.Person;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
-import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
-import org.openjdk.jmh.runner.options.TimeValue;
 
 import java.util.DoubleSummaryStatistics;
 import java.util.IntSummaryStatistics;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import static jvmscompare.Environment.PARENT_OPTIONS;
@@ -35,10 +30,12 @@ public class PersonCombinedSummaryStats
     public static void main(String[] args) throws RunnerException
     {
         new JavaInformation().printJavaInformation();
+
         Options options = new OptionsBuilder().parent(PARENT_OPTIONS)
                 .include(BENCHMARK_INCLUSION_REGEXP)
                 .result(BENCHMARK_RESULTS_DIRECTORY + args[0] + ".csv")
                 .build();
+
         new Runner(options).run();
     }
 
@@ -101,6 +98,5 @@ public class PersonCombinedSummaryStats
                 Person.getECPeople().parallelStream().mapToInt(Person::getAge).summaryStatistics();
         return new Object[]{stats1, stats2, stats3};
     }
-
 
 }

@@ -10,17 +10,14 @@ import org.eclipse.collections.impl.collector.Collectors2;
 import org.eclipse.collections.impl.parallel.ParallelIterate;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
-import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
-import org.openjdk.jmh.runner.options.TimeValue;
 
 import java.util.List;
 import java.util.Map;
@@ -40,14 +37,17 @@ public class PersonFilterAndGroup
     private static final String BENCHMARK_RESULTS_DIRECTORY = "benchmark-results/person-filter-and-group/";
 
     private static final ExecutorService EXECUTOR_SERVICE = Executors.newWorkStealingPool();
+    private static final int SIX_FEET = 72;
 
     public static void main(String[] args) throws RunnerException
     {
         new JavaInformation().printJavaInformation();
+
         Options options = new OptionsBuilder().parent(PARENT_OPTIONS)
                 .include(BENCHMARK_INCLUSION_REGEXP)
                 .result(BENCHMARK_RESULTS_DIRECTORY + args[0] + ".csv")
                 .build();
+
         new Runner(options).run();
     }
 
@@ -56,7 +56,7 @@ public class PersonFilterAndGroup
     {
         Map<Integer, List<Person>> grouped =
                 Person.getJDKPeople().stream()
-                        .filter(person -> person.getHeightInInches() < 150)
+                        .filter(person -> person.getHeightInInches() < SIX_FEET)
                         .collect(Collectors.groupingBy(Person::getAge));
         return grouped;
     }
@@ -66,7 +66,7 @@ public class PersonFilterAndGroup
     {
         Multimap<Integer, Person> grouped = Person.getECPeople()
                 .asLazy()
-                .select(person -> person.getHeightInInches() < 150)
+                .select(person -> person.getHeightInInches() < SIX_FEET)
                 .groupBy(Person::getAge);
         return grouped;
     }
@@ -76,7 +76,7 @@ public class PersonFilterAndGroup
     {
         MutableListMultimap<Integer, Person> grouped =
                 Person.getECPeople()
-                        .select(person -> person.getHeightInInches() < 150)
+                        .select(person -> person.getHeightInInches() < SIX_FEET)
                         .groupBy(Person::getAge);
         return grouped;
     }
@@ -86,7 +86,7 @@ public class PersonFilterAndGroup
     {
         Map<Integer, List<Person>> grouped =
                 Person.getJDKPeople().parallelStream()
-                        .filter(person -> person.getHeightInInches() < 150)
+                        .filter(person -> person.getHeightInInches() < SIX_FEET)
                         .collect(Collectors.groupingBy(Person::getAge));
         return grouped;
     }
@@ -96,7 +96,7 @@ public class PersonFilterAndGroup
     {
         MutableListMultimap<Integer, Person> grouped =
                 Person.getJDKPeople().parallelStream()
-                        .filter(person -> person.getHeightInInches() < 150)
+                        .filter(person -> person.getHeightInInches() < SIX_FEET)
                         .collect(Collectors2.toListMultimap(Person::getAge));
         return grouped;
     }
@@ -106,7 +106,7 @@ public class PersonFilterAndGroup
     {
         ListMultimap<Integer, Person> grouped =
                 Person.getECPeople().asParallel(EXECUTOR_SERVICE, 100_000)
-                        .select(person -> person.getHeightInInches() < 150)
+                        .select(person -> person.getHeightInInches() < SIX_FEET)
                         .groupBy(Person::getAge);
         return grouped;
     }
@@ -115,7 +115,10 @@ public class PersonFilterAndGroup
     public MutableMultimap<Integer, Person> filterAndGroupByAge_EC_Eager_Parallel()
     {
         Iterable<Person> select =
-                ParallelIterate.select(Person.getECPeople(), person -> person.getHeightInInches() < 150);
+                ParallelIterate.select(
+                        Person.getECPeople(),
+                        person -> person.getHeightInInches() < SIX_FEET);
+
         MutableMultimap<Integer, Person> grouped =
                 ParallelIterate.groupBy(select, Person::getAge);
         return grouped;

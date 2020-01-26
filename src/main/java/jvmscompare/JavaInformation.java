@@ -2,8 +2,13 @@ package jvmscompare;
 
 public class JavaInformation {
 
+    public static void main(String[] args) {
+        new JavaInformation().printJavaInformation();
+    }
+
     public void printJavaInformation()
     {
+        System.setProperty("java.vm.name", "anonymous");
         System.out.println("Java Runtime Environment version: " + System.getProperty("java.version"));
         System.out.println("Java Runtime Environment vendor: " + System.getProperty("java.vendor"));
         System.out.println();

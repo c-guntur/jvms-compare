@@ -57,17 +57,21 @@ public class IntListFilter
     public static void main(String[] args) throws RunnerException
     {
         new JavaInformation().printJavaInformation();
+
         Options options = new OptionsBuilder().parent(PARENT_OPTIONS)
                 .include(BENCHMARK_INCLUSION_REGEXP)
                 .result(BENCHMARK_RESULTS_DIRECTORY + args[0] + ".csv")
                 .build();
+
         new Runner(options).run();
     }
 
     @Benchmark
     public List<Integer> filter_JDK_Boxed_Stream_Serial()
     {
-        return this.jdkList.stream().filter(i -> i % 2 == 0).collect(Collectors.toList());
+        return this.jdkList.stream()
+                .filter(i -> i % 2 == 0)
+                .collect(Collectors.toList());
     }
 
     @Benchmark
@@ -85,21 +89,24 @@ public class IntListFilter
     @Benchmark
     public List<Integer> filter_JDK_Boxed_Stream_Parallel()
     {
-        return this.jdkList.parallelStream().filter(i -> i % 2 == 0).collect(Collectors.toList());
+        return this.jdkList.parallelStream()
+                .filter(i -> i % 2 == 0)
+                .collect(Collectors.toList());
     }
 
     @Benchmark
     public IntList filter_EC_Primitive_Stream_Parallel()
     {
-        return IntLists.mutable.withAll(
-                this.ecIntList.primitiveParallelStream()
-                        .filter(i -> i % 2 == 0));
+        return IntLists.mutable
+                .withAll(this.ecIntList.primitiveParallelStream().filter(i -> i % 2 == 0));
     }
 
     @Benchmark
     public MutableList<Integer> filter_EC_Boxed_Lazy_Parallel()
     {
-        return this.ecList.asParallel(this.executor, 100_000).select(i -> i % 2 == 0).toList();
+        return this.ecList
+                .asParallel(this.executor, 100_000)
+                .select(i -> i % 2 == 0).toList();
     }
 
 }
