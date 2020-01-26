@@ -13,14 +13,14 @@ GraalVM CE, GraalVM EE, OpenJDK 11, Oracle JDK 11.
 
 Sequence | JDK | Version |  Notes
 -------------- | ------------------ | ---------------------- | -------------------------------
-01 | Oracle JDK 11 | 11.0.5 | 
-02 | Graal VM EE | 19.3.0.2 | 
-03 | Graal VM CE | 19.3.0.2 | 
+01 | Oracle JDK 11 | 11.0.6 | 
+02 | Graal VM EE | 19.3.1 | 
+03 | Graal VM CE | 19.3.1 | 
 04 | AdoptOpenJDK 11 w/Hotspot | 11.0.6 +10 | 
 05 | AdoptOpenJDK 11 w/OpenJ9 | 11.0.6 +10 | OpenJ9 build openj9-0.18.1
 06 | OpenJDK 11 | 11.0.2 | 
 07 | OpenJDK 11 w/Graal | 11.0.2 | Experimental Option +UseJVMCICompiler
-08 | GraalEE w/C2 | 19.3.0.2 | Experimental Option -UseJVMCICompiler
+08 | GraalEE w/C2 | 19.3.1 | Experimental Option -UseJVMCICompiler
 
 ## Links to download the JDKs
 1. Oracle JDK 11.0.5: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html
