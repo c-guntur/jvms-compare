@@ -25,17 +25,23 @@ Sequence | JDK | Version |  Notes
 ## Links to download the JDKs (Mac versions used, linked)
 1. Oracle JDK 11.0.6: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html  
 **Direct Link**: N/A - Requires OTN login  
-_This JDK is renamed to oraclejdk-11.0.6.jdk/_
+_This JDK is renamed to oraclejdk-11.0.6.jdk/_  
+
 1. GraalVM CE 19.3.1: https://github.com/graalvm/graalvm-ce-builds/releases  
-**Direct Link**: https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.1/graalvm-ce-java11-darwin-amd64-19.3.1.tar.gz
+**Direct Link**: https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.1/graalvm-ce-java11-darwin-amd64-19.3.1.tar.gz  
+
 1. GraalVM EE 19.3.1: https://www.oracle.com/downloads/graalvm-downloads.html  
-**Direct Link**: N/A - Requires OTN login
+**Direct Link**: N/A - Requires OTN login  
+
 1. AdoptOpenJDK Hotspot 11.0.6 +10: https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot  
-**Direct Link**: https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.6%2B10/OpenJDK11U-jdk_x64_mac_hotspot_11.0.6_10.pkg
+**Direct Link**: https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.6%2B10/OpenJDK11U-jdk_x64_mac_hotspot_11.0.6_10.pkg  
+
 1. AdoptOpenJDK OpenJ9 11.0.6 +10: https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=openj9  
-**Direct Link**: https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.6%2B10_openj9-0.18.1/OpenJDK11U-jdk_x64_mac_openj9_11.0.6_10_openj9-0.18.1.pkg 
+**Direct Link**: https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.6%2B10_openj9-0.18.1/OpenJDK11U-jdk_x64_mac_openj9_11.0.6_10_openj9-0.18.1.pkg  
+ 
 1. OpenJDK 11.0.2: https://jdk.java.net/archive/  
-**Direct Link**: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_osx-x64_bin.tar.gz
+**Direct Link**: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_osx-x64_bin.tar.gz  
+
 
 #### NOTE: OS X Catalina Security - trusted executables.
 It is important to test each downloaded JDK before running the benchmarks, since some of the distrubutors 
