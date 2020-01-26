@@ -24,7 +24,8 @@ Sequence | JDK | Version |  Notes
 
 ## Links to download the JDKs (Mac versions used, linked)
 1. Oracle JDK 11.0.6: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html  
-**Direct Link**: https://download.oracle.com/otn/java/jdk/11.0.6+8/90eb79fb590d45c8971362673c5ab495/jdk-11.0.6_osx-x64_bin.tar.gz
+**Direct Link**: https://download.oracle.com/otn/java/jdk/11.0.6+8/90eb79fb590d45c8971362673c5ab495/jdk-11.0.6_osx-x64_bin.tar.gz  
+_This JDK is renamed to oraclejdk-11.0.6.jdk/_
 1. GraalVM CE 19.3.1: https://github.com/graalvm/graalvm-ce-builds/releases  
 **Direct Link**: https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.1/graalvm-ce-java11-darwin-amd64-19.3.1.tar.gz
 1. GraalVM EE 19.3.1: https://www.oracle.com/downloads/graalvm-downloads.html  
@@ -40,11 +41,10 @@ Sequence | JDK | Version |  Notes
 It is important to test each downloaded JDK before running the benchmarks, since some of the distrubutors 
 are not yet endorsed. Run the test_jdks.sh.
 
-Meanwhile, run a `java -version` by navigating to the HOME directory of each JDK from a terminal. 
 If any JDK throws a security constraint, the quick work-around is to remove the quarantine attribute:
-For instance for GraalVM EE 19.3.0.2:
+For instance for GraalVM EE 19.3.1:
 
-`xattr -d com.apple.quarantine /Library/Java/JavaVirtualMachines/graalvm-ee-java11-19.3.0.2/`
+`sudo xattr -d com.apple.quarantine /Library/Java/JavaVirtualMachines/graalvm-ee-java11-19.3.1/`
 
 ## Setup Steps
 
@@ -62,6 +62,7 @@ can be created by:
 1. copy/pasting an existing profile in the `pom.xml`.
 1. renaming the profile _**appropriately**, to reflect the toolchain and type of benchmark_.
 1. modifying the toolchain configuration in **maven-toolchains-plugin** to pick the right toolchain.
+1. modifying the env.sh to point to the right JDK Home.
 1. {optionally} updating the **exec-maven-plugin** to run the appropriate Benchmark class.
 
 ## Notes on toolchains
