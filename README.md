@@ -24,17 +24,17 @@ Sequence | JDK | Version |  Notes
 
 ## Links to download the JDKs (Mac versions used, linked)
 1. Oracle JDK 11.0.6: https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html  
-**Link**: https://download.oracle.com/otn/java/jdk/11.0.6+8/90eb79fb590d45c8971362673c5ab495/jdk-11.0.6_osx-x64_bin.tar.gz
+**Direct Link**: https://download.oracle.com/otn/java/jdk/11.0.6+8/90eb79fb590d45c8971362673c5ab495/jdk-11.0.6_osx-x64_bin.tar.gz
 1. GraalVM CE 19.3.1: https://github.com/graalvm/graalvm-ce-builds/releases  
-**Link**: https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.1/graalvm-ce-java11-darwin-amd64-19.3.1.tar.gz
+**Direct Link**: https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.1/graalvm-ce-java11-darwin-amd64-19.3.1.tar.gz
 1. GraalVM EE 19.3.1: https://www.oracle.com/downloads/graalvm-downloads.html  
-**Link**: https://download.oracle.com/otn/utilities_drivers/oracle-labs/graalvm-ee-java11-darwin-amd64-19.3.1.tar.gz
+**Direct Link**: https://download.oracle.com/otn/utilities_drivers/oracle-labs/graalvm-ee-java11-darwin-amd64-19.3.1.tar.gz
 1. AdoptOpenJDK Hotspot 11.0.6 +10: https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot  
-**Link**: https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.6%2B10/OpenJDK11U-jdk_x64_mac_hotspot_11.0.6_10.pkg
+**Direct Link**: https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.6%2B10/OpenJDK11U-jdk_x64_mac_hotspot_11.0.6_10.pkg
 1. AdoptOpenJDK OpenJ9 11.0.6 +10: https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=openj9  
-**Link**: https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.6%2B10_openj9-0.18.1/OpenJDK11U-jdk_x64_mac_openj9_11.0.6_10_openj9-0.18.1.pkg 
+**Direct Link**: https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.6%2B10_openj9-0.18.1/OpenJDK11U-jdk_x64_mac_openj9_11.0.6_10_openj9-0.18.1.pkg 
 1. OpenJDK 11.0.2: https://jdk.java.net/archive/  
-**Link**: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_osx-x64_bin.tar.gz
+**Direct Link**: https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_osx-x64_bin.tar.gz
 
 #### NOTE: OS X Catalina Security - trusted executables.
 It is important to test each downloaded JDK before running the benchmarks, since some of the distrubutors 
