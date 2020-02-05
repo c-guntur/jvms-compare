@@ -6,7 +6,6 @@ echo "--------------------------------"
 echo "06. Beginning OpenJDK benchmarks ..."
 export JAVA_HOME=${OPENJDK_11_HOME}
 export PATH=$JAVA_HOME/bin:$PATH
-export MAVEN_OPTS=
 
 echo "JAVA_HOME=${JAVA_HOME}"
 echo "Java Version"
@@ -14,7 +13,7 @@ echo "------------"
 echo `java -version`
 echo "------------"
 
-export MAVEN_OPTS=
+export MAVEN_OPTS="-Xms1024m -Xmx1024m"
 
 #IntList
 echo "  1. IntListFilter benchmarks :: less output/06_OpenJDKHotspotIntListFilter.txt"

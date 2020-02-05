@@ -13,7 +13,7 @@ echo "------------"
 echo `java -version`
 echo "------------"
 
-export MAVEN_OPTS=
+export MAVEN_OPTS="-Xms1024m -Xmx1024m"
 
 #IntList
 echo "  1. IntListFilter benchmarks :: less output/01_OracleJDKIntListFilter.txt"

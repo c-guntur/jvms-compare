@@ -15,7 +15,7 @@ echo "------------"
 echo `java -version`
 echo "------------"
 
-export MAVEN_OPTS="-XX:-UseJVMCICompiler"
+export MAVEN_OPTS="-Xms1024m -Xmx1024m -XX:-UseJVMCICompiler"
 
 #IntList
 echo "  1. IntListFilter benchmarks :: less output/08_GraalEEHotspotIntListFilter.txt"

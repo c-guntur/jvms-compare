@@ -126,6 +126,8 @@
                                 <configuration>
                                     <executable>java</executable>
                                     <arguments>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.IntListFilter</argument>
@@ -141,6 +143,8 @@
                                 <configuration>
                                     <executable>java</executable>
                                     <arguments>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.IntListSum</argument>
@@ -156,6 +160,8 @@
                                 <configuration>
                                     <executable>java</executable>
                                     <arguments>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.IntListTransform</argument>
@@ -186,6 +192,8 @@
                                 <configuration>
                                     <executable>java</executable>
                                     <arguments>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.PersonFilterOnly</argument>
@@ -201,6 +209,8 @@
                                 <configuration>
                                     <executable>java</executable>
                                     <arguments>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.PersonFilterAndGroup</argument>
@@ -216,6 +226,8 @@
                                 <configuration>
                                     <executable>java</executable>
                                     <arguments>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.PersonIntSummaryStats</argument>
@@ -231,6 +243,8 @@
                                 <configuration>
                                     <executable>java</executable>
                                     <arguments>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.PersonCombinedSummaryStats</argument>
@@ -557,6 +571,8 @@
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:+EnableJVMCI</argument>
                                         <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>
@@ -577,6 +593,8 @@
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:+EnableJVMCI</argument>
                                         <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>
@@ -597,6 +615,8 @@
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:+EnableJVMCI</argument>
                                         <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>
@@ -617,6 +637,8 @@
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:+EnableJVMCI</argument>
                                         <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.PersonFilterOnly</argument>
@@ -635,6 +657,8 @@
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:+EnableJVMCI</argument>
                                         <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.PersonFilterAndGroup</argument>
@@ -653,6 +677,8 @@
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:+EnableJVMCI</argument>
                                         <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.PersonIntSummaryStats</argument>
@@ -671,6 +697,8 @@
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:+EnableJVMCI</argument>
                                         <argument>-XX:+UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.PersonCombinedSummaryStats</argument>
@@ -743,6 +771,8 @@
                                     <arguments>
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:-UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>
@@ -762,6 +792,8 @@
                                     <arguments>
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:-UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>
@@ -781,6 +813,8 @@
                                     <arguments>
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:-UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>
@@ -800,6 +834,8 @@
                                     <arguments>
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:-UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.PersonFilterOnly</argument>
@@ -817,6 +853,8 @@
                                     <arguments>
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:-UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.PersonFilterAndGroup</argument>
@@ -834,6 +872,8 @@
                                     <arguments>
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:-UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.PersonIntSummaryStats</argument>
@@ -851,6 +891,8 @@
                                     <arguments>
                                         <argument>-XX:+UnlockExperimentalVMOptions</argument>
                                         <argument>-XX:-UseJVMCICompiler</argument>
+                                        <argument>-Xms1024m</argument>
+                                        <argument>-Xmx1024m</argument>
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>jvmscompare.benchmark.PersonCombinedSummaryStats</argument>
