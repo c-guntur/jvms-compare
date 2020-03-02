@@ -60,6 +60,19 @@ For instance for GraalVM EE 19.3.1:
 1. Setup the environment variables (at a minimum, GRAALVM_EE_HOME and ORACLE_JAVA8_HOME).
 
 
+## Files and directories (all current scripts are Mac specific)
+* ***`output/`*** : Created after a run, stores the maven execution output (and raw benchmark data therein.  
+* ***`benchmark-results/`*** : Created after a run, stores the benchmark CSV files in appropriate sub-directories.  
+* **`setup.sh`** : Deletes output and benchmark directories and recreates them. Not usually needed directly.  
+* **`env.sh`** : Sets the JDK HOME for each JDK used in the test. Required to update if JDK installations have different names from what is standard.   
+* **`test_jdks.sh`** : This script tests the env.sh setup and prints out each JDK's version information to verify that the JDK is correctly setup.
+* **`toolchains.xml`** : Local toolchains for use in maven. These point to the JDK installations and specify keywords that allow for selection when executing the maven profile for each JDK.
+* **`##_*.sh`** : The numbered shell scripts that execute the maven commands to compile and execute each set of benchmarks for the JDK mentioned in the file name.
+* **`pom.xml`** : The maven pom. Contains properties for the benchmark volume, forks, warmups and measurements. Also containts the profiles for each JDK with maven exec executing each benchmark class. The first benchmark in most cases is the default exec, while the rest have `exec@...` associated with them.
+
+
+
+
 ## Usage
 
 Different benchmark tests can be run using different profiles set up in the `pom.xml`. More profiles
